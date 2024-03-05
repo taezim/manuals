@@ -1,0 +1,8 @@
+package com.springmvc.repository;
+
+import com.springmvc.service.SRService;
+
+public class SRServiceImpl implements SRService
+{
+
+}

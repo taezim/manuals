@@ -1,0 +1,107 @@
+package com.springmvc.repository;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+
+import com.springmvc.domain.Address;
+import com.springmvc.domain.Cart;
+import com.springmvc.domain.CartItem;
+import com.springmvc.domain.Customer;
+import com.springmvc.domain.Order;
+import com.springmvc.domain.Product;
+import com.springmvc.service.CartItemService;
+
+@Repository
+public class OrderRepositoryImpl implements OrderRepository 
+{
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
+	
+	@Autowired
+	private CartItemService cartItemService;
+	
+	private Map<Long, Order> listOfOrders; // 관리자한테 리턴할거야 구매자 ㄴㄴ
+	private long nextOrderId;
+	
+	public OrderRepositoryImpl() 
+	{
+		listOfOrders = new HashMap<Long, Order>();
+		nextOrderId = 1000;
+	}
+
+	@Override
+	public Long saveOrder(Order order)
+	{
+		order.setOrderId(getNextOrderId());
+		String SQL = "INSERT INTO customer(o_id, c_phone) VALUES (?, ?)";
+		jdbcTemplate.update(SQL, order.getOrderId(), order.getCustomer().getPhone());
+		
+		order.setDate(getTimeNow());
+		String SQL2 = "INSERT INTO orders(o_id, o_date, c_id) VALUES (?, ?, ?)";
+		jdbcTemplate.update(SQL2, order.getOrderId(), order.getDate(), order.getCart().getCartId());
+		
+		
+		String SQL3 = "INSERT INTO shipping(o_id, c_id, s_phone) VALUES (?, ?, ?)";
+		jdbcTemplate.update(SQL3, order.getOrderId(), order.getCart().getCartId(), order.getShipping().getPhone());
+		
+		
+		listOfOrders.put(order.getOrderId(), order);
+
+		return order.getOrderId();
+	}
+	
+	@Override
+	public void setOrderAddress(Order order) 
+	{
+		
+		System.out.println(order.getCustomer());
+		System.out.println(order.getShipping());
+		System.out.println(order.getCustomer().getAddress());
+		// Customer Address
+		Address customerAddr = order.getCustomer().getAddress();
+		String SQL = "INSERT INTO address(o_id, a_personName, a_name, a_country, a_zipCode) VALUES (?, ?, ?, ?, ?)";
+		jdbcTemplate.update(SQL, order.getOrderId(), customerAddr.getRecipientName(), customerAddr.getAddressName(), customerAddr.getCountry(), customerAddr.getZipCode());
+		System.out.println(customerAddr.getAddressName());
+		// Customer Address
+		Address shippingAddr = order.getShipping().getAddress();
+		jdbcTemplate.update(SQL, order.getOrderId(), shippingAddr.getRecipientName(), shippingAddr.getAddressName(), shippingAddr.getCountry(), shippingAddr.getZipCode());
+}
+	
+	private synchronized long getNextOrderId() 
+	{
+		return nextOrderId++;
+	}
+	public static String getTimeNow() 
+	{
+		LocalDateTime currentTime = LocalDateTime.now();
+
+	    // 원하는 형식으로 출력하기
+	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+	    String formattedTime = currentTime.format(formatter);
+
+	    System.out.println("현재 시간: " + formattedTime);
+	    
+	    return formattedTime;
+	}
+	@Override
+	public void setOrderItems(Order order) 
+	{
+		String cartId = order.getCart().getCartId();
+		List<CartItem> listOfItems = cartItemService.readAllCartItem(cartId);
+		for (CartItem cartItem : listOfItems) 
+		{
+			System.out.println(cartItem.getProductId());
+		    String SQL = "INSERT INTO orderItems(o_id, p_productId, o_quantity, o_totalPrice) VALUES (?, ?, ?, ?)";
+            jdbcTemplate.update(SQL, order.getOrderId(), cartItem.getProductId(), cartItem.getQuantity(), cartItem.getTotalPrice());
+		}
+	
+	}
+	
+}

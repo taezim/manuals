@@ -1,0 +1,17 @@
+127.0.0.1 - - [28/Feb/2024:17:59:06 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [28/Feb/2024:17:59:07 +0900] "GET /waguwagu/ HTTP/1.1" 200 57
+0:0:0:0:0:0:0:1 - - [28/Feb/2024:17:59:10 +0900] "GET /waguwagu/lessons/all HTTP/1.1" 200 943
+0:0:0:0:0:0:0:1 - - [28/Feb/2024:17:59:13 +0900] "GET /waguwagu/lessons/first1 HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [28/Feb/2024:17:59:23 +0900] "GET /waguwagu/lessons/third3 HTTP/1.1" 404 721
+127.0.0.1 - - [28/Feb/2024:18:01:34 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [28/Feb/2024:18:01:35 +0900] "GET /waguwagu/ HTTP/1.1" 200 57
+0:0:0:0:0:0:0:1 - - [28/Feb/2024:18:01:38 +0900] "GET /waguwagu/lessons/all HTTP/1.1" 200 1316
+0:0:0:0:0:0:0:1 - - [28/Feb/2024:18:01:40 +0900] "GET /waguwagu/lessons/lesson?id=first1 HTTP/1.1" 200 1421
+0:0:0:0:0:0:0:1 - - [28/Feb/2024:18:01:40 +0900] "GET /waguwagu/resources/js/controllers.js HTTP/1.1" 200 1340
+0:0:0:0:0:0:0:1 - - [28/Feb/2024:18:01:49 +0900] "GET /waguwagu/lesson/regist?lessonId=first1 HTTP/1.1" 200 1319
+0:0:0:0:0:0:0:1 - - [28/Feb/2024:18:16:55 +0900] "GET /waguwagu/hospitals HTTP/1.1" 200 1230
+0:0:0:0:0:0:0:1 - - [28/Feb/2024:18:16:55 +0900] "GET /waguwagu/resources/images/hospital1 HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [28/Feb/2024:18:16:58 +0900] "GET /waguwagu/hospitals/hospital?id=H55 HTTP/1.1" 200 1481
+0:0:0:0:0:0:0:1 - - [28/Feb/2024:18:16:58 +0900] "GET /waguwagu/resources/images/hospital1 HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [28/Feb/2024:18:17:00 +0900] "GET /waguwagu/hospital/reserve?hospitalId=H55 HTTP/1.1" 200 2190
+0:0:0:0:0:0:0:1 - - [28/Feb/2024:18:17:00 +0900] "GET /waguwagu/resources/images/hospital1 HTTP/1.1" 404 721

@@ -1,0 +1,77 @@
+package com.springmvc.repository;
+
+import java.util.List;
+
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+
+import com.springmvc.domain.StdReservation;
+
+@Repository
+public class SRRepositoryImpl implements SRRepository
+{
+	private JdbcTemplate template;
+	   
+    @Autowired
+    public void setJdbcTemplate(DataSource dataSource) {
+      this.template = new JdbcTemplate(dataSource);
+   }
+	
+	
+	@Override
+	public List<StdReservation> readAllReservation(String memberId) 
+	{
+		  String sql = "SELECT * FROM std_reservation WHERE user_id = ?";
+	        return template.query(sql, new SRRowMapper(), memberId);
+	}
+
+	@Override
+	public StdReservation readStdReservationById(String reservationId) 
+	{
+		StdReservation SRInfo = null;
+
+		String SQL = "SELECT count(*) FROM std_reservation WHERE reserv_id=?";
+		int rowCount = template.queryForObject(SQL, Integer.class, reservationId);
+		if (rowCount != 0) {
+		    SQL = "SELECT * FROM std_reservation WHERE reserv_id=?";
+		    SRInfo = template.queryForObject(SQL, new Object[]{reservationId}, new SRRowMapper());
+		}
+
+		if (SRInfo == null) {
+		    throw new IllegalArgumentException("예약번호가 " + reservationId + "인 예약 내역을 찾을 수 없습니다.");
+		}
+
+		return SRInfo;
+	}
+
+	@Override
+	public void setNewSR(StdReservation SR) 
+	{
+	     String sql = "INSERT INTO std_reservation (std_id, std_name, std_filename, insert_date, reserv_date, start_time, end_time, " +
+	                "user_id, user_name, user_phone, team_id, team_name, mem_number, booking_fee, booking_status, isPaid) " +
+	                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	        template.update(sql,SR.getStdId(),SR.getStdName(),SR.getStdFilename(),SR.getInsertDate(),SR.getReservDate(),SR.getStartTime(),SR.getEndTime(),SR.getUserId(),SR.getUserName(),SR.getUserPhone(),SR.getTeamId(),SR.getTeamName(),SR.getMemNumber(),SR.getBookingFee(),SR.getBookingStatus(),SR.getIsPaid());
+	    }
+		
+
+
+	@Override
+	public void setUpdateSR(StdReservation SR) 
+	{
+	   String sql = "UPDATE std_reservation SET reserv_date=?, start_time=?, end_time=?, mem_number=?, booking_status=?, isPaid=? WHERE reserv_id=?";
+	
+	   template.update(sql, SR.getReservDate(), SR.getStartTime(), SR.getEndTime(), SR.getMemNumber(), SR.getBookingStatus(), SR.getIsPaid(), SR.getReservId());
+
+	}
+
+	@Override
+	public void setCancelSR(String reservationId) 
+	{
+      String sql = "UPDATE std_reservation SET booking_status = 'Cancelled' WHERE reserv_id = ?";
+      template.update(sql, reservationId);
+	}
+
+}

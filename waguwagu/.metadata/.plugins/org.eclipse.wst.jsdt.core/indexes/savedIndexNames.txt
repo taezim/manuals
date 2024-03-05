@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+D:\waguwagu\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+523606483.index
+2575381923.index
+2840419903.index
+4086672512.index
+1758881960.index
+2472461968.index
