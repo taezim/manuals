@@ -7,6 +7,7 @@ import java.util.Random;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -76,13 +77,13 @@ public class TeamController {
 	    model.addAttribute("totalGames",totalGames);
 	    
 	    
-		return "/Team/ttt";
+		return "/Team/team";
 	}
 	
 	
 	//create
 	@GetMapping("/add")
-	public String requestAddTeamForm(@ModelAttribute("addTeam")Team team) {
+	public String requestAddTeamForm(@ModelAttribute("addTeam")Team team, HttpSession session) {
 		System.out.println("/add GetMapping");
 		return "/Team/add";  //addTeam
 	}

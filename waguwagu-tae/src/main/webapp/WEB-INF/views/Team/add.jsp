@@ -108,8 +108,8 @@
                   <li class="nav-item"><a class="nav-link" href="blog.html">맛집</a></li>
                   <li class="nav-item"><a class="nav-link" href="single-blog.html">둘러볼곳</a></li>
                 </ul>
-							</li>
-							<li class="nav-item submenu dropdown">
+              </li>
+              <li class="nav-item submenu dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                   aria-expanded="false">의료</a>
                 <ul class="dropdown-menu">
@@ -183,19 +183,20 @@
 							<div class="col-md-12 form-group">
 							    선호지역
 							    <div class="creat_account">
-							        <input type="checkbox" id="f-option2" name="selector" onclick="updatePrefArea(this)" value="서울" />서울
-							        <input type="checkbox" name="selector" value="인천" onclick="updatePrefArea(this)"/>인천
-							        <input type="checkbox" name="selector" value="부산" onclick="updatePrefArea(this)"/>부산
-							        <input type="checkbox" name="selector" value="대구" onclick="updatePrefArea(this)"/>대구
-							        <input type="checkbox" name="selector" value="대전" onclick="updatePrefArea(this)"/>대전
+							        <input type="checkbox" id="f-option2" name="selector" onclick="updatePrefArea(this)" value="서울특별시" />서울특별시
+							        <input type="checkbox" name="selector" value="인천광역시" onclick="updatePrefArea(this)"/>인천광역시
+							        <input type="checkbox" name="selector" value="부산광역시" onclick="updatePrefArea(this)"/>부산광역시
+							        <input type="checkbox" name="selector" value="대구광역시" onclick="updatePrefArea(this)"/>대구광역시
+							        <input type="checkbox" name="selector" value="대전광역시" onclick="updatePrefArea(this)"/>대전광역시
 							        <input type="checkbox" name="selector" value="경상남도" onclick="updatePrefArea(this)"/>경상남도
 							        <input type="checkbox" name="selector" value="경상북도" onclick="updatePrefArea(this)"/>경상북도
-							        <input type="checkbox" name="selector" value="강원도" onclick="updatePrefArea(this)"/>강원도
+							        <input type="checkbox" name="selector" value="강원특별자치도" onclick="updatePrefArea(this)"/>강원특별자치도
+							        <input type="checkbox" name="selector" value="광주광역시" onclick="updatePrefArea(this)"/>광주광역시
 							        <input type="checkbox" name="selector" value="전라남도" onclick="updatePrefArea(this)"/>전라남도
 							        <input type="checkbox" name="selector" value="전라북도" onclick="updatePrefArea(this)"/>전라북도
 							        <input type="checkbox" name="selector" value="충청남도" onclick="updatePrefArea(this)"/>충청남도
 							        <input type="checkbox" name="selector" value="충청북도" onclick="updatePrefArea(this)"/>충청북도
-							        <input type="checkbox" name="selector" value="제주도" onclick="updatePrefArea(this)"/>제주도
+							        <input type="checkbox" name="selector" value="제주특별자치도" onclick="updatePrefArea(this)"/>제주특별자치도
 							    </div>
 							    <input type="hidden" id="prefArea" name="prefArea" />
 							</div>

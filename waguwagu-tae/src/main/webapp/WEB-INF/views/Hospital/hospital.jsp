@@ -203,7 +203,7 @@
 			</ul>
 			<div class="tab-content" id="myTabContent">
 				<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-					<p>팔꿈치 부상을 전문으로 하는 <strong>${hospitalInfo.yadmNm }</strong> 정형외과입니다.</p>
+					<p>안녕하세요! <strong>${hospitalInfo.yadmNm }</strong> 입니다.</p>
                     <div class="col-lg-12">
 
                     </div>
@@ -433,9 +433,9 @@
 									<li><a href="#"><i class="fa fa-star"></i></a></li>
 								</ul>
 								<!-- <p>Outstanding</p> -->
-				                <form action="#/" class="form-contact form-review mt-3">
+				                <form:form action="#/" class="form-contact form-review mt-3" modelAttribute="addReview" enctype="multipart/form-data">
 				                  <div class="form-group">
-				                    <input class="form-control" name="name" type="text" placeholder="이름을 입력하세요." required>
+				                    <input path="userId" class="form-control" name="name" type="text" placeholder="이름을 입력하세요." required>
 				                  </div>
 				                  <div class="form-group">
 				                    <input class="form-control" name="email" type="email" placeholder="이메일을 입력하세요." required>
@@ -449,7 +449,7 @@
 				                  <div class="form-group text-center text-md-right mt-3">
 				                    <button type="submit" class="button button--active button-review">등록</button>
 				                  </div>
-				                </form>
+				                </form:form>
 							</div>
 						</div>
 					</div>
@@ -463,7 +463,7 @@
 	<section class="related-product-area section-margin--small mt-0">
 		<div class="container">
 			<div class="section-intro pb-60px">
-		        <p>Popular Item in the market</p>
+		        <p>Road Map</p>
 		        <h1>오시는 <span class="section-intro__style">길</span></h1>
 		    </div>
 	    	<div class="">

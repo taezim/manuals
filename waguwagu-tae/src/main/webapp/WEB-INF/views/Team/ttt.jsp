@@ -152,6 +152,12 @@
               <li class="nav-item"><button><i class="ti-shopping-cart"></i><span class="nav-shop__circle">3</span></button> </li>
               <li class="nav-item"><button><i class="fas fa-user"></i></button></li>
             </ul>
+            <c:if test="${empty sessionScope.memberId }">
+            	<a href="/waguwagu/member/login">로그인</a>
+            </c:if>
+            <c:if test="${not empty sessionScope.memberId }">
+            	<a href="/waguwagu/member/logout">로그아웃</a>
+            </c:if>
           </div>
         </div>
       </nav>
@@ -210,10 +216,12 @@
                             <input type="date" name="birth" id="b" min="1996-12-30"  style="width:150px;font-size:15px;">
 							<a href='<c:url value="/team/result/winning?id=${tb.teamId}"/>' class="btn btn-sm btn-primary" >경기결과</a>      
 							<a href="<c:url value='/team/result/add?id=${tb.teamId}'/>" class="btn btn-sm btn-primary" >가입신청</a>
-							<a href="<c:url value='/team/result/add?id=${tb.teamId}'/>" class="btn btn-sm btn-primary" >경기결과수정</a>
-							<a href="<c:url value='/team/delete?id=${tb.teamId}'/>" class="btn btn-sm btn-primary" onclick="return deleteConfirm('${tb.teamId}')">삭제</a>
 							<a href='<c:url value="/team/result/recent?id=${tb.teamId}"/>' class="btn btn-sm btn-primary" >최근경기결과</a>
-							<a href='<c:url value="/team/update?id=${tb.teamId}"/>' class="btn btn-sm btn-primary" >수정</a>
+							<c:if test="${sessionScope.memberId == 'teamadmin'}"> 			    
+						    	<a href='<c:url value="/team/update?id=${tb.teamId}"/>' class="btn btn-success">수정&raquo;</a>
+						    	<a href="<c:url value='/team/delete?id=${tb.teamId}'/>" class="btn btn-danger" onclick="return deleteConfirm('${tb.teamId}')">삭제 &raquo;</a>
+						    	<a href="<c:url value='/team/result/add?id=${tb.teamId}'/>" class="btn btn-success">경기결과</a>
+						    </c:if>
 						</div>
 						<div class="card_area d-flex align-items-center">
 							<a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>

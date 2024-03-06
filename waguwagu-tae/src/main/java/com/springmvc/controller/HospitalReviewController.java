@@ -49,7 +49,7 @@ public class HospitalReviewController {
 	//create
 	@GetMapping("/add")
 	public String requestAddReviewForm(@ModelAttribute("addReview")HospitalReview hospitalReview) {
-		return "/Hospital/add";
+		return "/Hospital/hospital";
 	}
 	
 	@PostMapping("/add")
@@ -73,7 +73,7 @@ public class HospitalReviewController {
 			}
 		}
 		hospitalReviewService.setNewReview(hospitalReview);
-		return "redirect:/reviews";
+		return "redirect:/hospitalInfo";
 	}
 	@GetMapping("/update")
 	public String getUpdateReviewForm(@ModelAttribute("updateReview")HospitalReview hospitalReview, @RequestParam("id") String reviewId, Model model) {

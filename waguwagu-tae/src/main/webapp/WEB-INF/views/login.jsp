@@ -23,8 +23,7 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/style.css">
 </head>
 <body>
-	<!--================ Start Header Menu Area =================-->
-	<header class="header_area">
+<header class="header_area">
     <div class="main_menu">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
@@ -54,15 +53,15 @@
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                   aria-expanded="false">클래스</a>
                 <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="/waguwagu/Lesson/lessons">클래스?</a></li>
-                  <li class="nav-item"><a class="nav-link" href="/waguwagu/lessons">클래스목록</a></li>
+                  <li class="nav-item"><a class="nav-link" href="blog.html">클래스?</a></li>
+                  <li class="nav-item"><a class="nav-link" href="single-blog.html">클래스목록</a></li>
                 </ul>
 							</li>
               <li class="nav-item submenu dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                   aria-expanded="false">경기장</a>
                 <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="/waguwagu/">경기장목록</a></li>
+                  <li class="nav-item"><a class="nav-link" href="blog.html">경기장목록</a></li>
                   <li class="nav-item"><a class="nav-link" href="single-blog.html">경기장예약</a></li>
                 </ul>
 							</li>
@@ -78,8 +77,8 @@
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                   aria-expanded="false">의료</a>
                 <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="/waguwagu/Hospital/hospitals">병원목록</a></li>
-                  <li class="nav-item"><a class="nav-link" href="/waguwagu/Hospital/">병원예약</a></li>
+                  <li class="nav-item"><a class="nav-link" href="login.html">병원목록</a></li>
+                  <li class="nav-item"><a class="nav-link" href="register.html">병원예약</a></li>
                   <li class="nav-item"><a class="nav-link" href="tracking-order.html">재활추천</a></li>
                 </ul>
               </li>
@@ -90,23 +89,28 @@
               <li class="nav-item"><button><i class="ti-shopping-cart"></i><span class="nav-shop__circle">3</span></button> </li>
               <li class="nav-item"><button><i class="fas fa-user"></i></button></li>
             </ul>
+            <c:if test="${empty sessionScope.memberId }">
+            	<a href="/waguwagu/member/login">로그인</a>
+            </c:if>
+            <c:if test="${not empty sessionScope.memberId }">
+            	<a href="/waguwagu/member/logout">로그아웃</a>
+            </c:if>
           </div>
         </div>
       </nav>
     </div>
   </header>
 	<!--================ End Header Menu Area =================-->
-  
-  <!-- ================ start banner area ================= -->	
+	<!-- ================ start banner area ================= -->	
 	<section class="blog-banner-area" id="category">
 		<div class="container h-100">
 			<div class="blog-banner">
 				<div class="text-center">
-					<h1>Login / Register</h1>
+					<h1>${tb.teamName}</h1>
 					<nav aria-label="breadcrumb" class="banner-breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Login/Register</li>
+              <li class="breadcrumb-item active" aria-current="page">Shop Category</li>
             </ol>
           </nav>
 				</div>
@@ -114,7 +118,6 @@
     </div>
 	</section>
 	<!-- ================ end banner area ================= -->
-  
   <!--================Login Box Area =================-->
 	<section class="login_box_area section-margin">
 		<div class="container">
@@ -249,14 +252,22 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<!--================ End footer Area  =================-->
 
 
+	<script href="<c:url value ='/resources/js/jquery-3.3.1.min.js'/>"></script>
+  <script href="<c:url value ='/resources/js/jquery-migrate-3.0.1.min.js'/>"></script>
+  <script scr="<c:url value ='/resources/js/jquery-ui.js'/>"></script>
+  <script scr="<c:url value ='/resources/js/popper.min.js'/>"></script>
+  <script scr="<c:url value ='/resources/js/bootstrap.min.js'/>"></script>
+  <script scr="<c:url value ='/resources/js/owl.carousel.min.js'/>"></script>
+  <script scr="<c:url value ='/resources/js/jquery.stellar.min.js'/>"></script>
+  <script scr="<c:url value ='/resources/js/jquery.countdown.min.js'/>"></script>
+  <script scr="<c:url value ='/resources/js/bootstrap-datepicker.min.js'/>"></script>
+  <script scr="<c:url value ='/resources/js/jquery.easing.1.3.js'/>"></script>
+  <script scr="<c:url value ='/resources/js/aos.js'/>"></script>
+  <script scr="<c:url value ='/resources/js/jquery.fancybox.min.js'/>"></script>
+  <script scr="<c:url value ='/resources/js/jquery.sticky.js'/>"></script>
+  <script scr="<c:url value ='/resources/js/jquery.mb.YTPlayer.min.js'/>"></script>
 
-  <script src="vendors/jquery/jquery-3.2.1.min.js"></script>
-  <script src="vendors/bootstrap/bootstrap.bundle.min.js"></script>
-  <script src="vendors/skrollr.min.js"></script>
-  <script src="vendors/owl-carousel/owl.carousel.min.js"></script>
-  <script src="vendors/nice-select/jquery.nice-select.min.js"></script>
-  <script src="vendors/jquery.ajaxchimp.min.js"></script>
-  <script src="vendors/mail-script.js"></script>
-  <script src="js/main.js"></script>
+  <script scr="<c:url value ='/resources/js/main.js'/>"></script>
+
 </body>
 </html>

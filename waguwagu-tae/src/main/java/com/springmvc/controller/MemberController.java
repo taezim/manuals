@@ -72,7 +72,8 @@ public class MemberController {
 		if(member!=null) {
 			//session.setAttribute("member", member);
 			session.setAttribute("memberId", member.getMemberId()); // memberId만 세션에 저장
-			return "redirect:/games";
+			session.setAttribute("Name", member.getName());
+			return "redirect:/";
 		}else {
 			return "redirect:/member/login";
 		}

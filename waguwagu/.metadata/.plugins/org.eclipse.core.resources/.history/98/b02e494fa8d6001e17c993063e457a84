@@ -1,6 +1,0 @@
-package com.springmvc.service;
-
-public class SRServiceImpl implements SRService
-{
-
-}

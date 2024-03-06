@@ -3,6 +3,7 @@ package com.springmvc.controller;
 import java.io.File;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,13 +40,13 @@ public class MatchController {
 	
 	
 	@GetMapping("/add")
-	public String requestAddMatchForm(@ModelAttribute("addMatch") Match match, @RequestParam("id") String gameId, Model model) {
+	public String requestAddMatchForm(@ModelAttribute("addMatch") Match match, @RequestParam("id") String gameId, Model model,HttpSession session) {
 		
 //		Game game = new Game();
 //		String gameId = game.getGameId();
 		//model.addAttribute("match",gameById);
 		model.addAttribute("gameId", gameId);
-		
+		String memberId = (String)session.getId();
 		return "/Game/addMatch";
 	}
 	

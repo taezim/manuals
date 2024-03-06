@@ -99,4 +99,11 @@ public class HospitalInfoRepositoryImpl implements HospitalInfoRepository{
 		return hospitalInfo;
 	}
 
+	@Override
+	public List<HospitalInfo> findByLocation(String location) {
+		String SQL = "select * from hospitalInfo where sidoCdNm=?";
+		
+		return template.query(SQL, new Object[] {location}, new HospitalInfoRowMapper());
+	}
+
 }

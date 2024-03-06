@@ -129,6 +129,12 @@
 	              <li class="nav-item"><button><i class="ti-shopping-cart"></i><span class="nav-shop__circle">3</span></button> </li>
 	              <li class="nav-item"><button><i class="fas fa-user"></i></button></li>
 	            </ul>
+	            <c:if test="${empty sessionScope.memberId }">
+	            	<a href="/waguwagu/member/login">로그인</a>
+	            </c:if>
+	            <c:if test="${not empty sessionScope.memberId }">
+	            	<a href="/waguwagu/member/logout">로그아웃</a>
+	            </c:if>
 	          </div>
 	        </div>
 	      </nav>
@@ -159,27 +165,35 @@
     <div class="container">
       <div class="row">
         <div class="col-xl-3 col-lg-4 col-md-5">
-          <div class="sidebar-categories">
-            <div class="head">지역</div>
-            <ul class="main-categories">
-              <li class="common-filter">
-                <form action="#">
-                  <ul>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="men" name="brand"><label for="men">서울</label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="women" name="brand"><label for="women">인천</label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="accessories" name="brand"><label for="accessories">경상남도</label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="footwear" name="brand"><label for="footwear">경상북도</label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="bayItem" name="brand"><label for="bayItem">전라남도</label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="electronics" name="brand"><label for="electronics">전라북도</label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="food" name="brand"><label for="food">충청남도</label></li>
-                    <li class="filter-list"><input class="pixel-radio" type="radio" id="food" name="brand"><label for="food">충청남도</label></li>
-                  	<li class="filter-list"><input class="pixel-radio" type="radio" id="food" name="brand"><label for="food">충청남도</label></li>
-                  </ul>
-                </form>
-              </li>
-            </ul>
-          </div>
-        </div>
+	          <div class="sidebar-categories">
+	            <div class="head">지역</div>
+	            <ul class="main-categories">
+	              <li class="common-filter">
+	                <form action="#">
+	                  <ul>
+	                  	<li class="filter-list"><label for="all">전체보기</label></li>
+	                    <li class="filter-list"><label for="seoul">서울</label></li>
+	                    <li class="filter-list"><label for="incheon">인천</label></li>
+	                    <li class="filter-list"><label for="gyeonggi">경기</label></li>
+	                    <li class="filter-list"><label for="gangwon">강원도</label></li>
+	                    <li class="filter-list"><label for="gyeongnam">경상남도</label></li>
+	                    <li class="filter-list"><label for="busan">부산</label></li>
+	                    <li class="filter-list"><label for="ulsan">울산</label></li>
+	                    <li class="filter-list"><label for="gyeongbuk">경상북도</label></li>
+	                    <li class="filter-list"><label for="daegu">대구</label></li>
+	                    <li class="filter-list"><label for="junnam">전라남도</label></li>
+	                    <li class="filter-list"><label for="gwangju">광주</label></li>
+	                    <li class="filter-list"><label for="junbuk">전라북도</label></li>
+	                    <li class="filter-list"><label for="daejeon">대전</label></li>
+	                    <li class="filter-list"><label for="chungnam">충청남도</label></li>
+	                    <li class="filter-list"><label for="chungbuk">충청북도</label></li>
+	                  	<li class="filter-list"><label for="jeju">제주도</label></li>
+	                  </ul>
+	                </form>
+	              </li>
+	            </ul>
+	          </div>
+	        </div>
         <div class="col-xl-9 col-lg-8 col-md-7">
           <!-- Start Filter Bar -->
           <div class="filter-bar d-flex flex-wrap align-items-center">
