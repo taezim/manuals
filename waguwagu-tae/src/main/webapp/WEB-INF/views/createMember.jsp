@@ -74,79 +74,88 @@
 </head>
 <body>
 <!--================ Start Header Menu Area =================-->
+	<!--================ Start Header Menu Area =================-->
 	<header class="header_area">
-	    <div class="main_menu">
-	      <nav class="navbar navbar-expand-lg navbar-light">
-	        <div class="container">
-	          <a class="navbar-brand logo_h" href="index.html">
-	          	<img src="<c:url value='/resources/img/baseball.png'/>" alt=''/>
-	          </a>
-	          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-	            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	          </button>
-	          <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-	            <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
-	              <li class="nav-item"><a class="nav-link" href="index.html">홈</a></li>
-	              <li class="nav-item"><a class="nav-link" href="index.html">쇼핑</a></li>
-	              <li class="nav-item active submenu dropdown">
-	                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-	                  aria-expanded="false">구단</a>
-	                <ul class="dropdown-menu">
-	                  <li class="nav-item"><a class="nav-link" href="/waguwagu/team/add">구단등록</a></li>
-	                  <li class="nav-item"><a class="nav-link" href="/waguwagu/team">구단목록</a></li>
-	                  <li class="nav-item"><a class="nav-link" href="/waguwagu/games">경기목록</a></li>
-	                  <li class="nav-item"><a class="nav-link" href="/waguwagu/team/result/ranks">구단랭킹</a></li>
-	                  <li class="nav-item"><a class="nav-link" href="confirmation.html">나의구단</a></li>
-	                </ul>
-								</li>
-	              <li class="nav-item submenu dropdown">
-	                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-	                  aria-expanded="false">클래스</a>
-	                <ul class="dropdown-menu">
-	                  <li class="nav-item"><a class="nav-link" href="/waguwagu/Lesson/lessons">클래스?</a></li>
-	                  <li class="nav-item"><a class="nav-link" href="/waguwagu/lessons">클래스목록</a></li>
-	                </ul>
-								</li>
-	              <li class="nav-item submenu dropdown">
-	                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-	                  aria-expanded="false">경기장</a>
-	                <ul class="dropdown-menu">
-	                  <li class="nav-item"><a class="nav-link" href="/waguwagu/">경기장목록</a></li>
-	                  <li class="nav-item"><a class="nav-link" href="single-blog.html">경기장예약</a></li>
-	                </ul>
-								</li>
-	              <li class="nav-item submenu dropdown">
-	                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-	                  aria-expanded="false">관광</a>
-	                <ul class="dropdown-menu">
-	                  <li class="nav-item"><a class="nav-link" href="blog.html">맛집</a></li>
-	                  <li class="nav-item"><a class="nav-link" href="single-blog.html">둘러볼곳</a></li>
-	                </ul>
-								</li>
-								<li class="nav-item submenu dropdown">
-	                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-	                  aria-expanded="false">의료</a>
-	                <ul class="dropdown-menu">
-	                  <li class="nav-item"><a class="nav-link" href="/waguwagu/hospitalinfo/list">병원목록</a></li>
-	                  <li class="nav-item"><a class="nav-link" href="/waguwagu/Hospital/">병원예약</a></li>
-	                  <li class="nav-item"><a class="nav-link" href="tracking-order.html">재활추천</a></li>
-	                </ul>
-	              </li>
-	            </ul>
-	
-	            <ul class="nav-shop">
-	              <li class="nav-item"><button><i class="ti-search"></i></button></li>
-	              <li class="nav-item"><button><i class="ti-shopping-cart"></i><span class="nav-shop__circle">3</span></button> </li>
-	              <li class="nav-item" id="userNavItem"><button><i class="fas fa-user"></i></button></li>
-	            </ul>
-	          </div>
-	        </div>
-	      </nav>
-	    </div>
-	  </header>
+    <div class="main_menu">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <a class="navbar-brand logo_h" href="index.html">
+	          <img src="<c:url value='/resources/img/baseball.png'/>" alt=''/>
+	      </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+            <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
+              <li class="nav-item"><a class="nav-link" href="index.html">홈</a></li>
+              <li class="nav-item"><a class="nav-link" href="index.html">쇼핑</a></li>
+              <li class="nav-item active submenu dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                  aria-expanded="false">구단</a>
+                <ul class="dropdown-menu">
+                  <li class="nav-item"><a class="nav-link" href="/waguwagu/team/add">구단등록</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/waguwagu/team">구단목록</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/waguwagu/games">경기목록</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/waguwagu/team/result/ranks">구단랭킹</a></li>
+                  <li class="nav-item"><a class="nav-link" href="confirmation.html">나의구단</a></li>
+                </ul>
+							</li>
+              <li class="nav-item submenu dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                  aria-expanded="false">클래스</a>
+                <ul class="dropdown-menu">
+                  <li class="nav-item"><a class="nav-link" href="/waguwagu/lessons/add" onclick="submitclass()";>클래스등록</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/waguwagu/lessons">클래스목록</a></li>
+                </ul>
+							</li>
+              <li class="nav-item submenu dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                  aria-expanded="false">경기장</a>
+                <ul class="dropdown-menu">
+                  <li class="nav-item"><a class="nav-link" href="/waguwagu/">경기장목록</a></li>
+                  <li class="nav-item"><a class="nav-link" href="single-blog.html">경기장예약</a></li>
+                </ul>
+							</li>
+              <li class="nav-item submenu dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                  aria-expanded="false">관광</a>
+                <ul class="dropdown-menu">
+                  <li class="nav-item"><a class="nav-link" href="blog.html">맛집</a></li>
+                  <li class="nav-item"><a class="nav-link" href="single-blog.html">둘러볼곳</a></li>
+                </ul>
+							</li>
+							<li class="nav-item submenu dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                  aria-expanded="false">의료</a>
+                <ul class="dropdown-menu">
+                  <li class="nav-item"><a class="nav-link" href="/waguwagu/hospitalinfo/list">병원목록</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/waguwagu/Hospital/">병원예약</a></li>
+                  <li class="nav-item"><a class="nav-link" href="tracking-order.html">재활추천</a></li>
+                </ul>
+              </li>
+            </ul>
+
+            <ul class="nav-shop">
+              <li class="nav-item"><button><i class="ti-search"></i></button></li>
+              <li class="nav-item"><button><i class="ti-shopping-cart"></i><span class="nav-shop__circle">3</span></button> </li>
+              <li class="nav-item"><button><i class="fas fa-user"></i></button></li>
+            </ul>
+            <c:if test="${empty sessionScope.memberId }">
+            	<a href="/waguwagu/member/login">로그인</a>
+            </c:if>
+            <c:if test="${not empty sessionScope.memberId}">
+			    <form action="/waguwagu/member/logout" method="post">
+			        <input type="submit" value="로그아웃" style="border: none; background: none;  color:rgb(79, 155, 253)">
+			    </form>
+			</c:if>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
 	<!--================ End Header Menu Area =================-->
 	<!-- ================ start banner area ================= -->	
 	<section class="blog-banner-area" id="blog">
@@ -218,36 +227,6 @@
 					<form:radiobutton path="sex" value="여성" />여성
 				</div>
 			</div>
-			<div class="form-group row">
-				<label class="col-sm-2 control-label">소속구단</label>
-				<div class="col-sm-3">
-					<form:input path="team" class="form-control" />
-				</div>
-			</div>
-			<div class="form-group row">
-				<label class="col-sm-2 control-label">부상정보</label>
-				<div class="col-sm-5">
-					<form:textarea path="injury" cols="50" rows="2" class="form-control" />
-				</div>
-			</div>
-			<div class="form-group row">
-				<label class="col-sm-2 control-label">수강강의</label>
-				<div class="col-sm-3">
-					<form:input path="classId" class="form-control" />
-				</div>
-			</div>
-			<%-- <div class="form-group row">
-				<label class="col-sm-2 control-label">코치번호</label>
-				<div class="col-sm-3">
-					<form:input path="teacherId" class="form-control" />
-				</div>
-			</div>
-			<div class="form-group row">
-				<label class="col-sm-2 control-label">개인성적</label>
-				<div class="col-sm-3">
-					<form:input path="personalRecord" class="form-control" />
-				</div>
-			</div> --%>
 			<div class="form-group row">
 				<div class="col-sm-offset-2 col-sm-10">
 				<input type="submit" class="btn btn-primary" value="가입하기" />

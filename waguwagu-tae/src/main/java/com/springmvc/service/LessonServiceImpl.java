@@ -52,4 +52,10 @@ public class LessonServiceImpl implements LessonService
       lsRepository.setDeleteClass(classId);
    }
 
+@Override
+public List<Lesson> findByPosition(String position) {
+	// TODO Auto-generated method stub
+	return lsRepository.findByPosition(position);
+}
+
 }

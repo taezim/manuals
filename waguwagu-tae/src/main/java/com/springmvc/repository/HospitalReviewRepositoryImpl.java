@@ -51,21 +51,15 @@ public class HospitalReviewRepositoryImpl implements HospitalReviewRepository{
 
 	@Override
 	public void setNewReview(HospitalReview hospitalReview) {
-		String SQL = "INSERT INTO h_review (hr_id,hr_hospitalId,hr_userId,hr_date,hr_content,hr_rating,hr_filename)"+"VALUES(?,?,?,?,?,?,?)";
-		template.update(SQL,hospitalReview.getReviewId(),hospitalReview.getHospitalId(),hospitalReview.getUserId(),hospitalReview.getReviewDate(),hospitalReview.getReviewContent(),hospitalReview.getReviewRating(),hospitalReview.getFileName());
+		String SQL = "INSERT INTO h_review (hr_id,hr_hospitalId,hr_userId,hr_date,hr_content,hr_rating,hr_name,hr_title)"+"VALUES(?,?,?,?,?,?,?,?)";
+		template.update(SQL,hospitalReview.getReviewId(),hospitalReview.getHospitalId(),hospitalReview.getUserId(),hospitalReview.getReviewDate(),hospitalReview.getReviewContent(),hospitalReview.getReviewRating(),hospitalReview.getName(),hospitalReview.getTitle());
 	}
 
 	@Override
 	public void setUpdateReview(HospitalReview hospitalReview) {
-		if(hospitalReview.getFileName()!=null) {
-			String SQL = "UPDATE h_review SET hr_hospitalId=?,hr_userId=?,hr_date=?,hr_content=?,hr_rating=?,hr_filename=? WHERE hr_id=?";
-			template.update(SQL,hospitalReview.getHospitalId(),hospitalReview.getUserId(),hospitalReview.getReviewDate(),hospitalReview.getReviewContent(),hospitalReview.getReviewRating(),hospitalReview.getReviewImage(),hospitalReview.getReviewId());
-			
-		}
-		else if(hospitalReview.getFileName()==null) {
-			String SQL = "UPDATE h_review SET hr_hospitalId=?,hr_userId=?,hr_date=?,hr_content=?,hr_rating=? WHERE hr_id=?";
-			template.update(SQL,hospitalReview.getHospitalId(),hospitalReview.getUserId(),hospitalReview.getReviewDate(),hospitalReview.getReviewContent(),hospitalReview.getReviewRating(),hospitalReview.getReviewId());
-		}
+		
+			String SQL = "UPDATE h_review SET hr_hospitalId=?,hr_userId=?,hr_date=?,hr_content=?,hr_rating=?,hr_name=?,hr_title=? WHERE hr_id=?";
+			template.update(SQL,hospitalReview.getHospitalId(),hospitalReview.getUserId(),hospitalReview.getReviewDate(),hospitalReview.getReviewContent(),hospitalReview.getReviewRating(),hospitalReview.getName(),hospitalReview.getTitle(),hospitalReview.getReviewId());
 		
 	}
 
@@ -74,6 +68,21 @@ public class HospitalReviewRepositoryImpl implements HospitalReviewRepository{
 
 		String SQL = "DELETE FROM h_review WHERE hr_id=?";
 		this.template.update(SQL,reviewId);
+	}
+
+	@Override
+	public List<HospitalReview> readHospitalAllReviewList(String hospitalId) {
+		String SQL = "SELECT * FROM h_review WHERE hr_hospitalId = ?";
+		List<HospitalReview> listOfHospitalReviews = template.query(SQL, new Object[]{hospitalId}, new HospitalReviewRowMapper());
+		return listOfHospitalReviews;
+	}
+
+	@Override
+	public double calculateAvgScore(String hospitalId) {
+		String SQL = "SELECT ROUND(AVG(hr_rating),1) FROM h_review WHERE hr_hospitalId=?";
+		Double avgScore = template.queryForObject(SQL, new Object[] { hospitalId }, Double.class);
+		
+		return avgScore != null ? avgScore : 0.0;
 	}
 
 }

@@ -11,4 +11,5 @@ public interface LessonReviewService {
 	void setNewReview(LessonReview lessonReview);
 	void setUpdateReview(LessonReview lessonReview);
 	void setDeleteReview(String reviewId);
+	//List<LessonReview> readAllReviewList(String lessonid);
 }

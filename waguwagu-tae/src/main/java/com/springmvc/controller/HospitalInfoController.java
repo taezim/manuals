@@ -84,13 +84,40 @@ public class HospitalInfoController {
 		return "/Hospital/hospitals";
 	}
 	
+
+	//location에 따른 뷰 보여주기
+	 @GetMapping("/loc")
+	public String showHospitals(@RequestParam(name = "location", required = false) String location, @RequestParam(defaultValue = "1") int page,Model model) {
+	// location 파라미터에 따라 필요한 데이터를 가져와서 모델에 추가
+	List<HospitalInfo> hospitals = hospitalInfoRepository.findByLocation(location);
+	// 예를 들어, location이 null이면 전체 데이터를 가져오고, 아니면 해당 지역의 데이터를 가져오도록 구현
+	
+
+	
+	// 모델에 데이터 추가
+    model.addAttribute("dataList", hospitals);
+    
+	
+	return "/Hospital/hospitals"; // 실제 뷰 이름으로 수정
+	}
+	
+	
+		
+	
 	@GetMapping("/hospital")
 	public String requestHospitalInfoById(@RequestParam("id") String id, Model model, @ModelAttribute("addReview")HospitalReview hospitalReview) {
 		HospitalInfo hospitalInfoById = hospitalInfoRepository.readHospitalInfoById(id);
+		List<HospitalReview> reviews = hospitalReviewService.readHospitalAllReviewList(id);
+		double avgScore = hospitalReviewService.calculateAvgScore(id);
+
+		model.addAttribute("hospitalId",id);
 		model.addAttribute("hospitalInfo",hospitalInfoById);
-		
+		model.addAttribute("hospitalReviews", reviews);
+	    model.addAttribute("avgScore", avgScore);
 		return "/Hospital/hospital";
 	}
+	
+	
 	
 	@PostMapping("/hospital")
 	public String submitAddNewReview(@ModelAttribute("addReview")HospitalReview hospitalReview, HttpServletRequest request) {

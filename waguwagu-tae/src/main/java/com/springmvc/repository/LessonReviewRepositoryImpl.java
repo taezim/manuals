@@ -49,21 +49,18 @@ public class LessonReviewRepositoryImpl implements LessonReviewRepository{
 
 	@Override
 	public void setNewReview(LessonReview lessonReview) {
-		String SQL = "INSERT INTO l_review (lr_id, lessonid, lr_userId, lr_date, lr_content, lr_score, lr_filename)"+"VALUES(?, ?, ?, ?, ?, ?, ?)";
-		template.update(SQL,lessonReview.getReviewId(), lessonReview.getLessonId(), lessonReview.getUserId(), lessonReview.getDate(), lessonReview.getContent(), lessonReview.getScore(), lessonReview.getFileName());
+		String SQL = "INSERT INTO l_review (lr_id, lessonid, lr_userId, lr_date, lr_content, lr_score, name, title)"+"VALUES(?, ?, ?, ?, ?, ?,?,?)";
+		template.update(SQL,lessonReview.getReviewId(), lessonReview.getLessonId(), lessonReview.getUserId(), lessonReview.getDate(), lessonReview.getContent(), lessonReview.getScore(), lessonReview.getName(),lessonReview.getTitle());
 		
 	}
 
 	@Override
 	public void setUpdateReview(LessonReview lessonReview) {
-		if(lessonReview.getFileName()!=null) {
-			String SQL = "UPDATE l_review SET lessonid=?, lr_userId=?, lr_date=?, lr_content=?, lr_score=?, lr_filename=? WHERE lr_id=?";
-			template.update(SQL, lessonReview.getLessonId(), lessonReview.getUserId(), lessonReview.getDate(), lessonReview.getContent(), lessonReview.getScore(), lessonReview.getFileName(), lessonReview.getReviewId());
-		}
-		else if(lessonReview.getFileName()==null) {
-			String SQL = "UPDATE l_review SET lessonid=?, lr_userId=?, lr_date=?, lr_content=?, lr_score=? WHERE lr_id=?";
-			template.update(SQL,lessonReview.getLessonId(), lessonReview.getUserId(), lessonReview.getDate(), lessonReview.getContent(), lessonReview.getScore(), lessonReview.getReviewId());
-		}
+		
+		
+		String SQL = "UPDATE l_review SET lessonid=?, lr_userId=?, lr_date=?, lr_content=?, lr_score=?,name=?,title=? WHERE lr_id=?";
+		template.update(SQL,lessonReview.getLessonId(), lessonReview.getUserId(), lessonReview.getDate(), lessonReview.getContent(), lessonReview.getScore(), lessonReview.getName(),lessonReview.getTitle(), lessonReview.getReviewId());
+		
 		
 	}
 

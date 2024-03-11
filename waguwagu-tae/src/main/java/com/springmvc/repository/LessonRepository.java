@@ -15,4 +15,6 @@ public interface LessonRepository
    
    void setUpdateClass(Lesson ls);
    void setDeleteClass(String classId);
+   
+   List<Lesson> findByPosition(String position);
 }

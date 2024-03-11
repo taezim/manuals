@@ -44,5 +44,17 @@ public class HospitalReviewServiceImpl implements HospitalReviewService {
 		
 	}
 
+	@Override
+	public List<HospitalReview> readHospitalAllReviewList(String hospitalId) {
+		// TODO Auto-generated method stub
+		return hospitalReviewRepository.readHospitalAllReviewList(hospitalId);
+	}
+
+	@Override
+	public double calculateAvgScore(String hospitalId) {
+		// TODO Auto-generated method stub
+		return hospitalReviewRepository.calculateAvgScore(hospitalId);
+	}
+
 	
 }

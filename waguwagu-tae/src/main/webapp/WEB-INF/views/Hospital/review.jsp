@@ -15,9 +15,18 @@
 </head>
 <body>
 <h2>리뷰</h2>
-
-
-	<div class="col-md-4">
+<h3>평균점수 : ${avgScore }</h3>
+<c:forEach var="hospitalReview" items="${hospitalReviews}">
+---------------------------------------------------------------
+    <div>
+        <p>리뷰 ID: ${hospitalReview.reviewId}</p>
+        <p>병원 ID: ${hospitalReview.hospitalId}</p>
+        <p>사용자 ID : ${hospitalReview.userId}</p>
+		<p>작성날짜 : ${hospitalReview.reviewDate}</p>
+		<p>리뷰점수 : ${hospitalReview.reviewRating}</p>
+	</div>	
+</c:forEach>
+	<%-- <div class="col-md-4">
 		<c:choose>
 			<c:when test="${review.getReviewImage() == null}">
 				<img src="<c:url value='/resources/images/${review.fileName}'/>" style="width: 50%"/>
@@ -34,7 +43,7 @@
 		<p>작성날짜 : ${review.reviewDate}</p>
 		<p>리뷰점수 : ${review.reviewRating}</p>
 		<p>리뷰내용 : ${review.reviewContent}</p>		
-
+ --%>
 		<form:form name="addForm" method="put">        	
 		    <a href='<c:url value="/hospital/review/update?id=${review.reviewId}"/>' class="btn btn-success">수정&raquo;</a>
 		    <a href="<c:url value='/hospital/review/delete?id=${review.reviewId}'/>" class="btn btn-danger" onclick="return deleteConfirm('${hospital.hospitalId}')">삭제 &raquo;</a>

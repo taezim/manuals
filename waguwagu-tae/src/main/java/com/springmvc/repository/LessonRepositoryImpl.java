@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -91,6 +92,21 @@ public class LessonRepositoryImpl implements LessonRepository
          this.template.update(SQL, classId);
       
    }
+
+
+@Override
+public List<Lesson> findByPosition(String position) {
+	if (StringUtils.isBlank(position)) {
+        // 빈 문자열이나 null이면 전체 조회
+        String SQL = "SELECT * FROM lesson";
+        return template.query(SQL, new LessonRowMapper());
+    } else {
+        // 아니면 지정된 지역을 조회
+        String SQL = "SELECT * FROM lesson WHERE c_subject LIKE ?";
+        String parameter = "%" + position + "%";
+        return template.query(SQL, new Object[] {parameter}, new LessonRowMapper());
+    }
+}
    
    
 }

@@ -18,7 +18,8 @@ public class LessonReviewRowMapper implements RowMapper<LessonReview>{
 		lessonReview.setDate(rs.getString(4));
 		lessonReview.setContent(rs.getString(5));
 		lessonReview.setScore(rs.getInt(6));
-		lessonReview.setFileName(rs.getString(7));
+		lessonReview.setName(rs.getString(7));
+		lessonReview.setTitle(rs.getString(8));
 		return lessonReview;
 	}
 

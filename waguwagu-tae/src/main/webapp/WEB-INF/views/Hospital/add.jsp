@@ -35,7 +35,7 @@
 			<div class="form-group row">
 				<label class="col-sm-2 control-label">병원아이디</label>
 				<div class="col-sm-3">
-					<form:input path="hospitalId" class="form-control" />
+					<form:input path="hospitalId" class="form-control" value="${hospital.id}"/>
 				</div>
 			</div>
 			<div class="form-group row">

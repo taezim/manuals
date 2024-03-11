@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.sql.DataSource;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -101,9 +102,15 @@ public class HospitalInfoRepositoryImpl implements HospitalInfoRepository{
 
 	@Override
 	public List<HospitalInfo> findByLocation(String location) {
-		String SQL = "select * from hospitalInfo where sidoCdNm=?";
-		
-		return template.query(SQL, new Object[] {location}, new HospitalInfoRowMapper());
+		if (StringUtils.isBlank(location)) {
+	        // 빈 문자열이나 null이면 전체 조회
+	        String SQL = "SELECT * FROM hospitalInfo";
+	        return template.query(SQL, new HospitalInfoRowMapper());
+	    } else {
+	        // 아니면 지정된 지역을 조회
+	        String SQL = "SELECT * FROM hospitalInfo WHERE sidoCdNm LIKE ?";
+	        String parameter = "%" + location + "%";
+	        return template.query(SQL, new Object[] {parameter}, new HospitalInfoRowMapper());
+	    }
 	}
-
 }

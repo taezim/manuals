@@ -53,5 +53,11 @@ public class TeamServiceImpl implements TeamService{
 		teamRepository.setDeleteTeam(teamId);
 		
 	}
+
+	@Override
+	public List<Team> findByLocation(String location) {
+		// TODO Auto-generated method stub
+		return teamRepository.findByLocation(location);
+	}
 	
 }

@@ -2,6 +2,7 @@ package com.springmvc.service;
 
 import java.util.List;
 
+
 import com.springmvc.domain.Team;
 
 public interface TeamService {
@@ -16,5 +17,6 @@ public interface TeamService {
 	void setUpdateTeam(Team team);
 	void setDeleteTeam(String teamId);
 
+	List<Team> findByLocation(String location);
 
 }

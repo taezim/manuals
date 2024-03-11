@@ -125,6 +125,15 @@
               <li class="nav-item"><button><i class="ti-shopping-cart"></i><span class="nav-shop__circle">3</span></button> </li>
               <li class="nav-item"><button><i class="fas fa-user"></i></button></li>
             </ul>
+            <c:if test="${empty sessionScope.memberId }">
+            	<a href="/waguwagu/member/login">로그인</a>
+            </c:if>
+            <c:if test="${not empty sessionScope.memberId}">
+			    <form action="/waguwagu/member/logout" method="post">
+			        <input type="submit" value="로그아웃" style="border: none; background: none;  color:rgb(79, 155, 253)">
+			    </form>
+			</c:if>
+            
           </div>
         </div>
       </nav>
@@ -185,6 +194,7 @@
 							    <div class="creat_account">
 							        <input type="checkbox" id="f-option2" name="selector" onclick="updatePrefArea(this)" value="서울특별시" />서울특별시
 							        <input type="checkbox" name="selector" value="인천광역시" onclick="updatePrefArea(this)"/>인천광역시
+							        <input type="checkbox" name="selector" value="경기도" onclick="updatePrefArea(this)"/>경기도							       
 							        <input type="checkbox" name="selector" value="부산광역시" onclick="updatePrefArea(this)"/>부산광역시
 							        <input type="checkbox" name="selector" value="대구광역시" onclick="updatePrefArea(this)"/>대구광역시
 							        <input type="checkbox" name="selector" value="대전광역시" onclick="updatePrefArea(this)"/>대전광역시

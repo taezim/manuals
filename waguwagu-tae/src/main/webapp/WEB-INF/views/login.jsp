@@ -23,11 +23,14 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/style.css">
 </head>
 <body>
-<header class="header_area">
+<!--================ Start Header Menu Area =================-->
+	<header class="header_area">
     <div class="main_menu">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-          <a class="navbar-brand logo_h" href="index.html"><img src="img/logo.png" alt=""></a>
+          <a class="navbar-brand logo_h" href="index.html">
+	          <img src="<c:url value='/resources/img/baseball.png'/>" alt=''/>
+	      </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="icon-bar"></span>
@@ -53,15 +56,15 @@
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                   aria-expanded="false">클래스</a>
                 <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="blog.html">클래스?</a></li>
-                  <li class="nav-item"><a class="nav-link" href="single-blog.html">클래스목록</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/waguwagu/lessons/add" onclick="submitclass()";>클래스등록</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/waguwagu/lessons">클래스목록</a></li>
                 </ul>
 							</li>
               <li class="nav-item submenu dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                   aria-expanded="false">경기장</a>
                 <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="blog.html">경기장목록</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/waguwagu/">경기장목록</a></li>
                   <li class="nav-item"><a class="nav-link" href="single-blog.html">경기장예약</a></li>
                 </ul>
 							</li>
@@ -77,8 +80,8 @@
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                   aria-expanded="false">의료</a>
                 <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="login.html">병원목록</a></li>
-                  <li class="nav-item"><a class="nav-link" href="register.html">병원예약</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/waguwagu/hospitalinfo/list">병원목록</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/waguwagu/Hospital/">병원예약</a></li>
                   <li class="nav-item"><a class="nav-link" href="tracking-order.html">재활추천</a></li>
                 </ul>
               </li>
@@ -92,9 +95,11 @@
             <c:if test="${empty sessionScope.memberId }">
             	<a href="/waguwagu/member/login">로그인</a>
             </c:if>
-            <c:if test="${not empty sessionScope.memberId }">
-            	<a href="/waguwagu/member/logout">로그아웃</a>
-            </c:if>
+            <c:if test="${not empty sessionScope.memberId}">
+			    <form action="/waguwagu/member/logout" method="post">
+			        <input type="submit" value="로그아웃" style="border: none; background: none;  color:rgb(79, 155, 253)">
+			    </form>
+			</c:if>
           </div>
         </div>
       </nav>
@@ -127,7 +132,7 @@
 						<div class="hover">
 							<h4>New to our website?</h4>
 							<p>There are advances being made in science and technology everyday, and a good example of this is the</p>
-							<a class="button button-account" href="register.html">Create an Account</a>
+							<a class="button button-account" href="/waguwagu/member/createmember">회원가입</a>
 						</div>
 					</div>
 				</div>

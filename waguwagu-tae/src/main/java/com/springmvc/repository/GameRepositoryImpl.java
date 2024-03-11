@@ -29,22 +29,13 @@ public class GameRepositoryImpl implements GameRepository{
 	
 	@Override
 	public List<Game> readAllGame() {
-	    String SQL = "SELECT * FROM game g left join matching m ON g.g_id = m.g_id";
-	    Map<String, Game> gameMap = new HashMap<>();
-	    
-	    template.query(SQL, rs -> {
+	    String SQL = "SELECT * FROM game g LEFT JOIN matching m ON g.g_id = m.g_id ORDER BY g.g_date DESC;";
+
+	    List<Game> games = template.query(SQL, (rs, rowNum) -> {
 	        String gameId = rs.getString("g.g_id");
-	        
-	        // Game 객체가 이미 Map에 있는지 확인
-	        Game game = gameMap.get(gameId);
-	        if (game == null) {
-	            // Map에 없다면 Game 객체 생성
-	            game = new Game();
-	            game.setGameId(gameId);
-	            // 기존의 Game 속성 설정 코드
-	            gameMap.put(gameId, game);
-	        }
-	        
+
+	        Game game = new Game();
+	        game.setGameId(gameId);
 	        game.setTeamId1(rs.getString("g.t_id1"));
 	        game.setTeamName1(rs.getString("g.t_name1"));
 	        game.setDate(rs.getString("g.g_date"));
@@ -53,8 +44,7 @@ public class GameRepositoryImpl implements GameRepository{
 	        game.setUserNumber(rs.getString("g.userphone"));
 	        game.setStadium(rs.getString("g.g_stadium"));
 	        game.setFileName(rs.getString("g.g_filename"));
-	        
-	        // Match 객체 생성 및 설정
+
 	        Match match = new Match();
 	        match.setTeamId(rs.getString("m.t_id"));
 	        match.setTeamName(rs.getString("m.t_name"));
@@ -62,14 +52,13 @@ public class GameRepositoryImpl implements GameRepository{
 	        match.setUserName(rs.getString("m.username"));
 	        match.setUserNumber(rs.getString("m.userphone"));
 	        match.setFileName(rs.getString("m.g_filename"));
-	        // 다른 Match 속성 설정 코드들...
 
-	        // Game 객체에 Match 추가
 	        game.getMatches().add(match);
 
+	        return game;
 	    });
 
-	    return new ArrayList<>(gameMap.values());
+	    return games;
 	}
 
 	@Override

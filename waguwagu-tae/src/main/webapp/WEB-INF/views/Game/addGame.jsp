@@ -107,11 +107,13 @@
 	              <li class="nav-item"><button><i class="fas fa-user"></i></button></li>
 	            </ul>
 	            <c:if test="${empty sessionScope.memberId }">
-	            	<a href="/waguwagu/member/login">로그인</a>
+            		<a href="/waguwagu/member/login">로그인</a>
 	            </c:if>
-	            <c:if test="${not empty sessionScope.memberId }">
-	            	<a href="/waguwagu/member/logout">로그아웃</a>
-	            </c:if>
+	            <c:if test="${not empty sessionScope.memberId}">
+				    <form action="/waguwagu/member/logout" method="post">
+				        <input type="submit" value="로그아웃" style="border: none; background: none;  color:rgb(79, 155, 253)">
+				    </form>
+				</c:if>
 	          </div>
 	        </div>
 	      </nav>

@@ -36,83 +36,131 @@
 		font-size:30px;
 		color:#384aeb;
 	}
+	
+	
+	   #pagination {
+	    display: flex;
+	    justify-content: center;
+	    margin-top: 20px; /* Adjust as needed */
+	}
+	
+	#pagination button {
+	    margin: 0 5px; /* Adjust as needed */
+	    padding: 5px 10px;
+	    cursor: pointer;
+	    border: 1px solid #ccc;
+	    background-color: #f9f9f9;
+	}
+	
+	#pagination {
+	    display: flex;
+	    justify-content: center;
+	    overflow-x: auto; /* 가로 스크롤을 가능하게 함 */
+	    white-space: nowrap; /* 탭이 한 줄에 나열되도록 함 */
+	    margin-top: 20px; /* 원하는 만큼 여백 설정 */
+	}
+	
+	#pagination button {
+	    margin: 0 5px; /* 버튼 간격 설정 */
+	    padding: 5px 10px;
+	    cursor: pointer;
+	    border: 1px solid #ccc;
+	    background-color: #f9f9f9;
+	}
+	.rowmapper
+	{
+	   display: flex;
+	   flex-direction: column;
+	}
+	.rowmappertow
+	{
+	   display: flex;
+	}
   </style>
 </head>
 <body>
 	<!--================ Start Header Menu Area =================-->
 	<header class="header_area">
-	    <div class="main_menu">
-	      <nav class="navbar navbar-expand-lg navbar-light">
-	        <div class="container">
-	          <a class="navbar-brand logo_h" href="index.html">
-	          	<img src="<c:url value='/resources/img/baseball.png'/>" alt=''/>
-	          </a>
-	          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-	            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	          </button>
-	          <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-	            <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
-	              <li class="nav-item"><a class="nav-link" href="index.html">홈</a></li>
-	              <li class="nav-item"><a class="nav-link" href="index.html">쇼핑</a></li>
-	              <li class="nav-item active submenu dropdown">
-	                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-	                  aria-expanded="false">구단</a>
-	                <ul class="dropdown-menu">
-	                  <li class="nav-item"><a class="nav-link" href="/waguwagu/team/add">구단등록</a></li>
-	                  <li class="nav-item"><a class="nav-link" href="/waguwagu/team">구단목록</a></li>
-	                  <li class="nav-item"><a class="nav-link" href="/waguwagu/games">경기목록</a></li>
-	                  <li class="nav-item"><a class="nav-link" href="/waguwagu/team/result/ranks">구단랭킹</a></li>
-	                  <li class="nav-item"><a class="nav-link" href="confirmation.html">나의구단</a></li>
-	                </ul>
-								</li>
-	              <li class="nav-item submenu dropdown">
-	                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-	                  aria-expanded="false">클래스</a>
-	                <ul class="dropdown-menu">
-	                  <li class="nav-item"><a class="nav-link" href="/waguwagu/Lesson/lessons">클래스?</a></li>
-	                  <li class="nav-item"><a class="nav-link" href="/waguwagu/lessons">클래스목록</a></li>
-	                </ul>
-								</li>
-	              <li class="nav-item submenu dropdown">
-	                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-	                  aria-expanded="false">경기장</a>
-	                <ul class="dropdown-menu">
-	                  <li class="nav-item"><a class="nav-link" href="/waguwagu/">경기장목록</a></li>
-	                  <li class="nav-item"><a class="nav-link" href="single-blog.html">경기장예약</a></li>
-	                </ul>
-								</li>
-	              <li class="nav-item submenu dropdown">
-	                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-	                  aria-expanded="false">관광</a>
-	                <ul class="dropdown-menu">
-	                  <li class="nav-item"><a class="nav-link" href="blog.html">맛집</a></li>
-	                  <li class="nav-item"><a class="nav-link" href="single-blog.html">둘러볼곳</a></li>
-	                </ul>
-								</li>
-								<li class="nav-item submenu dropdown">
-	                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-	                  aria-expanded="false">의료</a>
-	                <ul class="dropdown-menu">
-	                  <li class="nav-item"><a class="nav-link" href="/waguwagu/hospitalinfo/list">병원목록</a></li>
-	                  <li class="nav-item"><a class="nav-link" href="/waguwagu/Hospital/">병원예약</a></li>
-	                  <li class="nav-item"><a class="nav-link" href="tracking-order.html">재활추천</a></li>
-	                </ul>
-	              </li>
-	            </ul>
-	
-	            <ul class="nav-shop">
-	              <li class="nav-item"><button><i class="ti-search"></i></button></li>
-	              <li class="nav-item"><button><i class="ti-shopping-cart"></i><span class="nav-shop__circle">3</span></button> </li>
-	              <li class="nav-item"><button><i class="fas fa-user"></i></button></li>
-	            </ul>
-	          </div>
-	        </div>
-	      </nav>
-	    </div>
-	  </header>
+    <div class="main_menu">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <a class="navbar-brand logo_h" href="index.html">
+	          <img src="<c:url value='/resources/img/baseball.png'/>" alt=''/>
+	      </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+            <ul class="nav navbar-nav menu_nav ml-auto mr-auto">
+              <li class="nav-item"><a class="nav-link" href="index.html">홈</a></li>
+              <li class="nav-item"><a class="nav-link" href="index.html">쇼핑</a></li>
+              <li class="nav-item active submenu dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                  aria-expanded="false">구단</a>
+                <ul class="dropdown-menu">
+                  <li class="nav-item"><a class="nav-link" href="/waguwagu/team/add">구단등록</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/waguwagu/team">구단목록</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/waguwagu/games">경기목록</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/waguwagu/team/result/ranks">구단랭킹</a></li>
+                  <li class="nav-item"><a class="nav-link" href="confirmation.html">나의구단</a></li>
+                </ul>
+							</li>
+              <li class="nav-item submenu dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                  aria-expanded="false">클래스</a>
+                <ul class="dropdown-menu">
+                  <li class="nav-item"><a class="nav-link" href="/waguwagu/lessons/add" onclick="submitclass()";>클래스등록</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/waguwagu/lessons">클래스목록</a></li>
+                </ul>
+							</li>
+              <li class="nav-item submenu dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                  aria-expanded="false">경기장</a>
+                <ul class="dropdown-menu">
+                  <li class="nav-item"><a class="nav-link" href="/waguwagu/">경기장목록</a></li>
+                  <li class="nav-item"><a class="nav-link" href="single-blog.html">경기장예약</a></li>
+                </ul>
+							</li>
+              <li class="nav-item submenu dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                  aria-expanded="false">관광</a>
+                <ul class="dropdown-menu">
+                  <li class="nav-item"><a class="nav-link" href="blog.html">맛집</a></li>
+                  <li class="nav-item"><a class="nav-link" href="single-blog.html">둘러볼곳</a></li>
+                </ul>
+							</li>
+							<li class="nav-item submenu dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                  aria-expanded="false">의료</a>
+                <ul class="dropdown-menu">
+                  <li class="nav-item"><a class="nav-link" href="/waguwagu/hospitalinfo/list">병원목록</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/waguwagu/Hospital/">병원예약</a></li>
+                  <li class="nav-item"><a class="nav-link" href="tracking-order.html">재활추천</a></li>
+                </ul>
+              </li>
+            </ul>
+
+            <ul class="nav-shop">
+              <li class="nav-item"><button><i class="ti-search"></i></button></li>
+              <li class="nav-item"><button><i class="ti-shopping-cart"></i><span class="nav-shop__circle">3</span></button> </li>
+              <li class="nav-item"><button><i class="fas fa-user"></i></button></li>
+            </ul>
+            <c:if test="${empty sessionScope.memberId }">
+            	<a href="/waguwagu/member/login">로그인</a>
+            </c:if>
+            <c:if test="${not empty sessionScope.memberId}">
+			    <form action="/waguwagu/member/logout" method="post">
+			        <input type="submit" value="로그아웃" style="border: none; background: none;  color:rgb(79, 155, 253)">
+			    </form>
+			</c:if>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
 	<!--================ End Header Menu Area =================-->
 	<!-- ================ start banner area ================= -->	
 	<section class="blog-banner-area" id="blog">
@@ -141,7 +189,7 @@
 	</div>
 
   <!--================Single Product Area =================-->
-	<div class="product_image_area">
+	<div class="product_image_area" style="padding-top:30px;">
 		<div class="container">
 			<div class="row s_product_inner">
 				<div class="col-lg-6">
@@ -156,12 +204,13 @@
 					</div>
 				</div>
 				<div class="col-lg-5 offset-lg-1">
-					<div class="s_product_text">
+					<div class="s_product_text" style="margin: 10px;">
 						<h3>${hospitalInfo.yadmNm }</h3>
 						<h2>정형외과</h2>
 						<ul class="list">
 							<li><a class="active" href="#"><span>전화번호</span> : ${hospitalInfo.telno }</a></li>
 							<li><a href="#"><span>지역</span> : ${hospitalInfo.sidoCdNm}</a></li>
+							<li><a href="${hospitalInfo.hospUrl }">홈페이지 : ${hospitalInfo.hospUrl }</a></li>
 						</ul>
                         
 						<p>${hospitalInfo.addr }</p>
@@ -241,14 +290,12 @@
                                 </div>
                                 <div class="col-lg-12 mt-4">
                                         <p>
-                                                MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money
-                                                on boot camp when you can get the MCSE study materials yourself at a fraction of
-                                                the camp price. However, who has the willpower.
-                                        </p>
+                                                <strong>진료시간</strong>
+                                        </p> 
                                         <p>
-                                                MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money
-                                                on boot camp when you can get the MCSE study materials yourself at a fraction of
-                                                the camp price. However, who has the willpower.
+                                                평일 : 08:00 ~ 17:00
+                                                <br>
+                                                토요일 : 08:00 ~ 13:00
                                         </p>
                                 </div>
                         </div>
@@ -276,7 +323,7 @@
 								<div class="review_item reply">
 									<div class="media">
 										<div class="d-flex">
-											<img src="img/product/review2.png" alt="">
+											<img src="img/product/review2.png" alt="'/>"/>
 										</div>
 										<div class="media-body">
 											<h4>서의정</h4>
@@ -338,13 +385,14 @@
 					</div>
 				</div>
 				<div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
-					<div class="row">
+					<div class="row rowmapper">
+					<div class="rowmappertow">
 						<div class="col-lg-6">
 							<div class="row total_rate">
 								<div class="col-6">
 									<div class="box_total">
 										<h5>총점</h5>
-										<h4>4.0</h4>
+										<h4>${avgScore }</h4>
 									</div>
 								</div>
 								<div class="col-6">
@@ -365,61 +413,45 @@
 								</div>
 							</div>
 							<div class="review_list">
-								<div class="review_item">
-									<div class="media">
-										<div class="d-flex">
-											<img src="img/product/review2.png" alt="">
-										</div>
-										<div class="media-body">
-											<h4>서의정</h4>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-										</div>
-									</div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-										commodo</p>
-								</div>
-								<div class="review_item">
-									<div class="media">
-										<div class="d-flex">
-											<img src="img/product/review2.png" alt="">
-										</div>
-										<div class="media-body">
-											<h4>강도영</h4>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-										</div>
-									</div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-										commodo</p>
-								</div>
-								<div class="review_item">
-									<div class="media">
-										<div class="d-flex">
-											<img src="img/product/review2.png" alt="">
-										</div>
-										<div class="media-body">
-											<h4>이태림</h4>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-										</div>
-									</div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-										commodo</p>
-								</div>
+								<c:forEach var="review" items="${hospitalReviews}">
+								    <div class="review_item" >
+								        <div class="media">
+								            <div class="d-flex">
+								                <img src="<c:url value='/resources/img/product/review2.png" alt="'/>"/>
+								            </div>
+								            <div class="media-body">
+								                <h4>${review.name}</h4>
+								                <i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+								            </div>
+								        </div>
+								        <p>${review.reviewContent}</p>
+								    </div>
+							    </c:forEach>
 							</div>
+							<!-- 페이지버튼 -->    
+						  <div class="d-flex justify-content-center">
+				            <div aria-label="Page navigation example">
+				              <ul class="pagination">
+				                <li class="page-item">
+				                  <a class="page-link" href="#" aria-label="Previous">
+				                    <span aria-hidden="true">&laquo;</span>
+				                  </a>
+			                	</li>
+				                <li class="page-item"><a class="page-link" href="#">1</a></li>
+				                <li class="page-item"><a class="page-link" href="#">2</a></li>
+				                <li class="page-item"><a class="page-link" href="#">3</a></li>
+				                <li class="page-item">
+				                <a class="page-link" href="#" aria-label="Next">
+			                    <span aria-hidden="true">&raquo;</span>
+			                  	</a>
+				                </li>
+				              </ul>
+				            </div>
+				          </div>
 						</div>
 						<div class="col-lg-6">
 							<div class="review_box">
@@ -433,18 +465,27 @@
 									<li><a href="#"><i class="fa fa-star"></i></a></li>
 								</ul>
 								<!-- <p>Outstanding</p> -->
-				                <form:form action="#/" class="form-contact form-review mt-3" modelAttribute="addReview" enctype="multipart/form-data">
+				                <form:form action="/waguwagu/hospital/review/add" method="post" class="form-contact form-review mt-3" modelAttribute="addReview" >
 				                  <div class="form-group">
-				                    <input path="userId" class="form-control" name="name" type="text" placeholder="이름을 입력하세요." required>
+				                    <input path="name" class="form-control" name="name" type="text" placeholder="이름을 입력하세요." required>
 				                  </div>
 				                  <div class="form-group">
-				                    <input class="form-control" name="email" type="email" placeholder="이메일을 입력하세요." required>
+				                    <input type="text" path="hospitalId" class="form-control" name="hospitalId" value="${hospitalId}" >
 				                  </div>
 				                  <div class="form-group">
-				                    <input class="form-control" name="subject" type="text" placeholder="제목을 입력하세요.">
+				                    <input type="date" path="reviewDate" class="form-control" name="reviewDate" >
 				                  </div>
 				                  <div class="form-group">
-				                    <textarea class="form-control different-control w-100" name="textarea" id="textarea" cols="30" rows="5" placeholder="글을 작성하세요."></textarea>
+				                    <input type="text" path="reviewRating" class="form-control" name="reviewRating" placeholder="평점을 입력하세요.">
+				                  </div>
+				                  <div class="form-group">
+				                    <input path="userId" class="form-control" name="userId" type="email" value="${id}" placeholder="이메일을 입력하세요." required>
+				                  </div>
+				                  <div class="form-group">
+				                    <input path="title" class="form-control" name="title" type="text" placeholder="제목을 입력하세요.">
+				                  </div>
+				                  <div class="form-group">
+				                    <textarea path="reviewContent" class="form-control different-control w-100" name="reviewContent" id="textarea" cols="30" rows="5" placeholder="글을 작성하세요."></textarea>
 				                  </div>
 				                  <div class="form-group text-center text-md-right mt-3">
 				                    <button type="submit" class="button button--active button-review">등록</button>
@@ -453,6 +494,8 @@
 							</div>
 						</div>
 					</div>
+					<div id="pagination" class="pagination"></div>
+				</div>
 				</div>
 			</div>
 		</div>
@@ -567,7 +610,106 @@
         }
     </script>
 
+
+
+<!-- 페이징처리 -->
+	<script>
+	/* 3개 글 보기 */
+	 var list = document.getElementsByClassName('review_list').getElementsByClassName('review_item');
+	 console.log('ss',list); 
+	 var pageNum = document.getElementsByClassName('pagination');
+	  var limitPerPage = 3;
+	  var totalPages = Math.ceil(list.length / limitPerPage);
 	
+	  for (var i = limitPerPage; i < list.length; i++) {
+	    list[i].style.display = 'none';
+	  }
+	
+	  for (var i = 1; i <= totalPages; i++) {
+	    pageNum.innerHTML += "<button onclick='changePage(" + i + ")'>" + i + "</button>";
+	  }
+	
+	  window.changePage = function(page) {
+	    var start = (page - 1) * limitPerPage;
+	    var end = start + limitPerPage;
+	
+	    for (var i = 0; i < list.length; i++) {
+	      list[i].style.display = 'none';
+	    }
+	
+	    for (var i = start; i < end; i++) {
+	      if (list[i]) {
+	        list[i].style.display = 'block';
+	      }
+	    }
+	  }
+	  
+	  var numbers = document.getElementsByClassName('number');
+	  for (var i = 0; i < numbers.length; i++) {
+	    numbers[i].addEventListener('click', function(e) {
+	      var buttons = e.target.parentNode.parentNode.getElementsByClassName('edit_delete_buttons')[0];
+	      buttons.style.display = buttons.style.display === 'none' ? 'block' : 'none';
+	    });
+	  }
+	
+	  var editButtons = document.getElementsByClassName('edit_button');
+	  for (var i = 0; i < editButtons.length; i++) {
+	    editButtons[i].addEventListener('click', function(e) {
+	      // Edit 버튼 클릭 시 동작 정의
+	      console.log('Edit button clicked');
+	    });
+	  }
+	
+	  var deleteButtons = document.getElementsByClassName('delete_button');
+	  for (var i = 0; i < deleteButtons.length; i++) {
+	    deleteButtons[i].addEventListener('click', function(e) {
+	      // Delete 버튼 클릭 시 동작 정의
+	      console.log('Delete button clicked');
+	    });
+	  }
+	  
+	  document.getElementById('comment_list').addEventListener('click', function(e) {
+	     if (e.target && e.target.classList.contains('number')) {
+	       var buttons = e.target.parentNode.parentNode.parentNode.getElementsByClassName('edit_delete_buttons')[0];
+	       buttons.style.display = buttons.style.display === 'none' ? 'block' : 'none';
+	     }
+	
+	     if (e.target && e.target.classList.contains('edit_button')) {
+	       // Edit 버튼 클릭 시 동작 정의
+	       console.log('Edit button clicked');
+	     }
+	
+	     if (e.target && e.target.classList.contains('delete_button')) {
+	       // Delete 버튼 클릭 시 동작 정의
+	       console.log('Delete button clicked');
+	     }
+	   });
+	  
+	  
+	  
+	  document.addEventListener('DOMContentLoaded', function() {
+	       var pagination = document.getElementsByClassName('pagination');
+	       var buttons = pagination.getElementsByTagName('button');
+	
+	       // 각 버튼에 대한 클릭 이벤트 추가
+	       for (var i = 0; i < buttons.length; i++) {
+	           buttons[i].addEventListener('click', function() {
+	               // 현재 선택된 버튼의 인덱스 확인
+	               var currentIndex = Array.from(buttons).indexOf(this);
+	
+	               // 다음 버튼의 인덱스 계산
+	               var nextIndex = currentIndex + 1;
+	               if (nextIndex >= buttons.length) {
+	                   nextIndex = 0; // 마지막 버튼일 경우 첫 번째 버튼으로 이동
+	               }
+	
+	               // 다음 버튼으로 이동
+	               buttons[nextIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+	           });
+	       }
+	   });
+	
+</script>
 	
   <script src="<c:url value='/resources/vendors/jquery/jquery-3.2.1.min.js'/>"/></script>
   <script src="<c:url value='/resources/vendors/bootstrap/bootstrap.bundle.min.js'/>"/></script>

@@ -11,4 +11,5 @@ public interface HospitalInfoRepository {
 	int getTotalItemCount();
 	HospitalInfo readHospitalInfoById(String id);
 	List<HospitalInfo> findByLocation(String location);
+	
 }

@@ -81,6 +81,16 @@ public class TeamController {
 	}
 	
 	
+	//location에 따른 정보 출력
+	@GetMapping("/location")
+	public String showTeams(@RequestParam(name="location", required = false)String location, @RequestParam(defaultValue = "1") int page,Model model) {
+		List<Team> list = teamService.findByLocation(location);
+		model.addAttribute("teamList",list);
+		
+		return "/Team/teams";
+	}
+	
+	
 	//create
 	@GetMapping("/add")
 	public String requestAddTeamForm(@ModelAttribute("addTeam")Team team, HttpSession session) {

@@ -82,7 +82,14 @@
     .text-md-right{}
 
   </style>
-
+<script type="text/javascript">
+    function checkAndNavigate(event, hasMatches) {
+        if (!hasMatches) {
+            event.preventDefault(); // 이벤트 기본 동작 막기 (페이지 이동 방지)
+            alert("매칭 전입니다!");
+        }
+    }
+</script>
 </head>
 <body>
 	<header class="header_area">
@@ -263,8 +270,15 @@
 				                                    	<h2>vs</h2>
 				                                    </div>
 				                                    <div class="tm">
-					                                    <img src="<c:url value='/resources/images/${game.getMatches().get(0).fileName}'/>" alt="${game.getMatches().get(0).teamName} Image" style="width:50px" alt="Image" class="img-fluid">
-					                                    <h2 class=""> ${game.matches[0].teamName}</h2>
+					                                    <c:choose>
+													        <c:when test="${not empty game.getMatches()}">
+													            <img src="<c:url value='/resources/images/${game.getMatches().get(0).fileName}'/>" alt="${game.getMatches().get(0).teamName} Image" style="width:50px" alt="Image" class="img-fluid">
+													            <h2 class=""> ${game.matches[0].teamName}</h2>
+													        </c:when>
+													        <c:otherwise>
+													            <p>매칭 전입니다.</p>
+													        </c:otherwise>
+													    </c:choose>
 				                                    </div>
 			                                    </div>
 			                                    <div class="subheading mb-3">날짜 : ${game.date}</div>
@@ -273,7 +287,7 @@
 			                            </div>
 			                        </div>
 			                        <div class="text-md-right">
-			                        	<a href="<c:url value='/games/game?id=${game.gameId}'/>" onclick="checkAndNavigate(event, ${not empty game})" class="btn btn-sm btn-primary">상세보기</a>
+			                        	<a href="<c:url value='/games/game?id=${game.gameId}'/>" onclick="checkAndNavigate(event, ${not empty game.matches})" class="btn btn-sm btn-primary">상세보기</a>
 										
 	      								<a href="<c:url value='/match/add?id=${game.gameId}'/>" onclick="checkAndNavigateMatch(event, '${game.gameId}', ${game.matches})" class="btn btn-sm btn-primary">매칭</a>
 										<a href="<c:url value='/match/add?id=${game.gameId}'/>" onclick="checkAndNavigateMatch(event, '${game.gameId}', ${game.matches})" class="btn btn-sm btn-primary">매칭2</a>

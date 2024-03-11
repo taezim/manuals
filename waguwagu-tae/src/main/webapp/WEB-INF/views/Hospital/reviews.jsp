@@ -34,6 +34,7 @@
 		<p>작성날짜 : ${hospitalReview.reviewDate}</p>
 		<p>리뷰점수 : ${hospitalReview.reviewRating}</p>		
 		<p><a href="<c:url value="/hospital/review/review?id=${hospitalReview.reviewId}"/>"class="btn btn-secondary" role="button">상세정보 &raquo;</a>
+		<p><a href="<c:url value="/hospital/review/reviews?id=${hospitalReview.hospitalId}"/>"class="btn btn-secondary" role="button">병원리뷰 &raquo;</a>	    
 	    </div>
 	    <hr>
 </c:forEach>

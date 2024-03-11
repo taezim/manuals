@@ -17,8 +17,8 @@ public class HospitalReviewRowMapper implements RowMapper<HospitalReview>{
 		hospitalReview.setReviewDate(rs.getString(4));
 		hospitalReview.setReviewContent(rs.getString(5));
 		hospitalReview.setReviewRating(rs.getInt(6));
-		hospitalReview.setFileName(rs.getString(7));
-		
+		hospitalReview.setName(rs.getString(7));
+		hospitalReview.setTitle(rs.getString(8));
 		return hospitalReview;
 	}
 }

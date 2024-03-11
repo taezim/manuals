@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -87,6 +88,21 @@ public class TeamRepositoryImpl implements TeamRepository{
 	public void setDeleteTeam(String teamId) {
 		String SQL = "DELETE FROM team WHERE t_id=?";
 		this.template.update(SQL, teamId);
+	}
+
+
+	@Override
+	public List<Team> findByLocation(String location) {
+	    if (StringUtils.isBlank(location) || location.equals(" ")) {
+	        // 빈 문자열이나 null 또는 공백이면 전체 조회
+	        String SQL = "SELECT * FROM team";
+	        return template.query(SQL, new TeamRowMapper());
+	    } else {
+	        // 아니면 지정된 지역을 조회
+	        String SQL = "SELECT * FROM team WHERE t_place LIKE ?";
+	        String parameter = "%" + location + "%";
+	        return template.query(SQL, new Object[] {parameter}, new TeamRowMapper());
+	    }
 	}
 
 

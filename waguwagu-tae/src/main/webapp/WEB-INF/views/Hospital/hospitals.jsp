@@ -62,7 +62,7 @@
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                   aria-expanded="false">클래스</a>
                 <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="/waguwagu/Lesson/lessons">클래스등록</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/waguwagu/lessons/add" onclick="submitclass()";>클래스등록</a></li>
                   <li class="nav-item"><a class="nav-link" href="/waguwagu/lessons">클래스목록</a></li>
                 </ul>
 							</li>
@@ -101,9 +101,11 @@
             <c:if test="${empty sessionScope.memberId }">
             	<a href="/waguwagu/member/login">로그인</a>
             </c:if>
-            <c:if test="${not empty sessionScope.memberId }">
-            	<a href="/waguwagu/member/logout">로그아웃</a>
-            </c:if>
+            <c:if test="${not empty sessionScope.memberId}">
+			    <form action="/waguwagu/member/logout" method="post">
+			        <input type="submit" value="로그아웃" style="border: none; background: none;  color:rgb(79, 155, 253)">
+			    </form>
+			</c:if>
           </div>
         </div>
       </nav>
@@ -134,22 +136,22 @@
   	<section class="section-margin--small mb-5">
     	<div class="container">
 	      	<div class="row">
-	      		<input class="pixel-radio" type="radio" id="all" name="location" value="전체보기" class="radio_check">
+	      		<input class="pixel-radio" type="radio" id="all" name="location" value=" " class="radio_check">
 	      		<input class="pixel-radio" type="radio" id="seoul" name="location" value="서울" class="radio_check">
 				<input class="pixel-radio" type="radio" id="incheon" name="location" value="인천" class="radio_check">
 				<input class="pixel-radio" type="radio" id="gyeonggi" name="location" value="경기" class="radio_check">
-				<input class="pixel-radio" type="radio" id="gangwon" name="location" value="강원도" class="radio_check">
-				<input class="pixel-radio" type="radio" id="gyeongnam" name="location" value="경상남도" class="radio_check">
+				<input class="pixel-radio" type="radio" id="gangwon" name="location" value="강원" class="radio_check">
+				<input class="pixel-radio" type="radio" id="gyeongnam" name="location" value="경남" class="radio_check">
 				<input class="pixel-radio" type="radio" id="busan" name="location" value="부산" class="radio_check">
 				<input class="pixel-radio" type="radio" id="ulsan" name="location" value="울산" class="radio_check">
-				<input class="pixel-radio" type="radio" id="gyeongbuk" name="location" value="경상북도" class="radio_check">
+				<input class="pixel-radio" type="radio" id="gyeongbuk" name="location" value="경북" class="radio_check">
 				<input class="pixel-radio" type="radio" id="daegu" name="location" value="대구" class="radio_check">
-				<input class="pixel-radio" type="radio" id="junnam" name="location" value="전라남도" class="radio_check">
+				<input class="pixel-radio" type="radio" id="junnam" name="location" value="전남" class="radio_check">
 				<input class="pixel-radio" type="radio" id="gwangju" name="location" value="광주" class="radio_check">
-				<input class="pixel-radio" type="radio" id="junbuk" name="location" value="전라북도" class="radio_check">
+				<input class="pixel-radio" type="radio" id="junbuk" name="location" value="전북" class="radio_check">
 				<input class="pixel-radio" type="radio" id="daejeon" name="location" value="대전" class="radio_check">
-				<input class="pixel-radio" type="radio" id="chungnam" name="location" value="충청남도" class="radio_check">
-				<input class="pixel-radio" type="radio" id="chungbuk" name="location" value="충청북도" class="radio_check">
+				<input class="pixel-radio" type="radio" id="chungnam" name="location" value="충남" class="radio_check">
+				<input class="pixel-radio" type="radio" id="chungbuk" name="location" value="충북" class="radio_check">
 				<input class="pixel-radio" type="radio" id="jeju" name="location" value="제주">
     
 	        
@@ -162,7 +164,7 @@
 		                <form action="#">
 		                  <ul>
 		                  	<li class="filter-list"><label for="all">전체보기</label></li>
-		                    <li class="filter-list" onclick="clicko()"><label>서울</label></li>
+		                    <li class="filter-list"><label for="seoul">서울</label></li>
 		                    <li class="filter-list"><label for="incheon">인천</label></li>
 		                    <li class="filter-list"><label for="gyeonggi">경기</label></li>
 		                    <li class="filter-list"><label for="gangwon">강원도</label></li>
@@ -396,6 +398,70 @@ $(document).ready(function () {
     	}
 	});
 </script> -->
+
+
+<script>
+    $(document).ready(function() {
+        // 라디오 버튼 클릭 이벤트 처리
+        $('input[type="radio"]').on('change', function() {
+            // 선택된 라디오 버튼의 값 (서울, 인천, ...) 가져오기
+            var selectedLocation = $('input[name="location"]:checked').val();
+
+            // URL 동적으로 변경
+            var newUrl = '/waguwagu/hospitalinfo/loc?location=' + encodeURIComponent(selectedLocation);
+            window.location.href = newUrl;
+        });
+    });
+</script>
+<!-- 페이지 번호를 변경하는 스크립트 추가 -->
+<script>
+    $(document).ready(function() {
+        // 라디오 버튼 클릭 이벤트 처리
+        $('input[type="radio"]').on('change', function() {
+            // 선택된 라디오 버튼의 값 (서울, 인천, ...) 가져오기
+            var selectedLocation = $('input[name="location"]:checked').val();
+
+            // URL 동적으로 변경
+            var newUrl = '/waguwagu/hospitalinfo/loc?location=' + encodeURIComponent(selectedLocation) + '&page=1';
+            window.location.href = newUrl;
+        });
+
+        // 페이지 번호를 클릭하는 이벤트 처리
+        $('.pagination-item').on('click', function() {
+            // 클릭한 페이지 번호 가져오기
+            var clickedPage = $(this).text();
+
+            // 현재 선택된 라디오 버튼의 값 (서울, 인천, ...) 가져오기
+            var selectedLocation = $('input[name="location"]:checked').val();
+
+            // URL 동적으로 변경
+            var newUrl = '/waguwagu/hospitalinfo/loc?location=' + encodeURIComponent(selectedLocation) + '&page=' + clickedPage;
+            window.location.href = newUrl;
+        });
+    });
+    
+ // 한 페이지당 표시될 항목 수
+    var itemsLimit = 15;
+
+    // 페이지 로딩 시 초기 설정
+    $(document).ready(function() {
+        // 페이지 로딩 시 한 페이지당 표시될 항목 수 설정
+        $('.hospital-item:gt(' + (itemsLimit - 1) + ')').hide();
+
+        // 페이지 로딩 시 전체 페이지 수 계산
+        var totalPages = Math.ceil($('.hospital-item').length / itemsLimit);
+
+        // 페이지네이션 버튼 생성
+        var pagination = '<ul class="pagination">';
+        for (var i = 1; i <= totalPages; i++) {
+            pagination += '<li class="pagination-item">' + i + '</li>';
+        }
+        pagination += '</ul>';
+
+        // 페이지네이션 추가
+        $('.pagination-container').html(pagination);
+    });
+</script>
 
   <script src="<c:url value='/resources/vendors/jquery/jquery-3.2.1.min.js'/>"/></script>
   <script src="<c:url value='/resources/vendors/bootstrap/bootstrap.bundle.min.js'/>"/></script>

@@ -90,7 +90,9 @@
     <div class="main_menu">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-          <a class="navbar-brand logo_h" href="index.html"><img src="img/logo.png" alt=""></a>
+          <a class="navbar-brand logo_h" href="index.html">
+	          <img src="<c:url value='/resources/img/baseball.png'/>" alt=''/>
+	      </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="icon-bar"></span>
@@ -116,15 +118,15 @@
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                   aria-expanded="false">클래스</a>
                 <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="blog.html">클래스?</a></li>
-                  <li class="nav-item"><a class="nav-link" href="single-blog.html">클래스목록</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/waguwagu/lessons/add" onclick="submitclass()";>클래스등록</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/waguwagu/lessons">클래스목록</a></li>
                 </ul>
 							</li>
               <li class="nav-item submenu dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                   aria-expanded="false">경기장</a>
                 <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="blog.html">경기장목록</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/waguwagu/">경기장목록</a></li>
                   <li class="nav-item"><a class="nav-link" href="single-blog.html">경기장예약</a></li>
                 </ul>
 							</li>
@@ -140,8 +142,8 @@
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                   aria-expanded="false">의료</a>
                 <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="nav-link" href="login.html">병원목록</a></li>
-                  <li class="nav-item"><a class="nav-link" href="register.html">병원예약</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/waguwagu/hospitalinfo/list">병원목록</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/waguwagu/Hospital/">병원예약</a></li>
                   <li class="nav-item"><a class="nav-link" href="tracking-order.html">재활추천</a></li>
                 </ul>
               </li>
@@ -155,9 +157,11 @@
             <c:if test="${empty sessionScope.memberId }">
             	<a href="/waguwagu/member/login">로그인</a>
             </c:if>
-            <c:if test="${not empty sessionScope.memberId }">
-            	<a href="/waguwagu/member/logout">로그아웃</a>
-            </c:if>
+            <c:if test="${not empty sessionScope.memberId}">
+			    <form action="/waguwagu/member/logout" method="post">
+			        <input type="submit" value="로그아웃" style="border: none; background: none;  color:rgb(79, 155, 253)">
+			    </form>
+			</c:if>
           </div>
         </div>
       </nav>
@@ -199,7 +203,7 @@
 				<div class="col-lg-6">
 					<div class="owl-carousel owl-theme s_Product_carousel">
 						<div class="single-prd-item">
-							<img src="<c:url value='/resources/images/${tb.fileName}'/>" style="width: 50%"/>
+							<img src="<c:url value='/resources/images/${tb.fileName}'/>" style="width: 100%"/>
 						</div>
 					</div>
 				</div>
@@ -218,9 +222,11 @@
 							<a href="<c:url value='/team/result/add?id=${tb.teamId}'/>" class="btn btn-sm btn-primary" >가입신청</a>
 							<a href='<c:url value="/team/result/recent?id=${tb.teamId}"/>' class="btn btn-sm btn-primary" >최근경기결과</a>
 							<c:if test="${sessionScope.memberId == 'teamadmin'}"> 			    
-						    	<a href='<c:url value="/team/update?id=${tb.teamId}"/>' class="btn btn-success">수정&raquo;</a>
-						    	<a href="<c:url value='/team/delete?id=${tb.teamId}'/>" class="btn btn-danger" onclick="return deleteConfirm('${tb.teamId}')">삭제 &raquo;</a>
-						    	<a href="<c:url value='/team/result/add?id=${tb.teamId}'/>" class="btn btn-success">경기결과</a>
+						    	<div>
+							    	<a href='<c:url value="/team/update?id=${tb.teamId}"/>' class="btn btn-sm btn-primary">수정</a>
+							    	<a href="<c:url value='/team/delete?id=${tb.teamId}'/>" class="btn btn-sm btn-primary" onclick="return deleteConfirm('${tb.teamId}')">삭제</a>
+							    	<a href="<c:url value='/team/result/add?id=${tb.teamId}'/>" class="btn btn-sm btn-primary">경기결과</a>
+						    	</div>
 						    </c:if>
 						</div>
 						<div class="card_area d-flex align-items-center">
@@ -240,10 +246,6 @@
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
 				<li class="nav-item">
 					<a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">병원정보</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
-					 aria-selected="false">QnA</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link active" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review"
@@ -441,20 +443,14 @@
 	</section>
 	<!--================End Product Description Area =================-->
   
-  <script href="<c:url value ='/resources/js/jquery-3.3.1.min.js'/>"></script>
-  <script href="<c:url value ='/resources/js/jquery-migrate-3.0.1.min.js'/>"></script>
-  <script scr="<c:url value ='/resources/js/jquery-ui.js'/>"></script>
-  <script scr="<c:url value ='/resources/js/popper.min.js'/>"></script>
-  <script scr="<c:url value ='/resources/js/bootstrap.min.js'/>"></script>
-  <script scr="<c:url value ='/resources/js/owl.carousel.min.js'/>"></script>
-  <script scr="<c:url value ='/resources/js/jquery.stellar.min.js'/>"></script>
-  <script scr="<c:url value ='/resources/js/jquery.countdown.min.js'/>"></script>
-  <script scr="<c:url value ='/resources/js/bootstrap-datepicker.min.js'/>"></script>
-  <script scr="<c:url value ='/resources/js/jquery.easing.1.3.js'/>"></script>
-  <script scr="<c:url value ='/resources/js/aos.js'/>"></script>
-  <script scr="<c:url value ='/resources/js/jquery.fancybox.min.js'/>"></script>
-  <script scr="<c:url value ='/resources/js/jquery.sticky.js'/>"></script>
-  <script scr="<c:url value ='/resources/js/jquery.mb.YTPlayer.min.js'/>"></script>
+  <script src="<c:url value='/resources/vendors/jquery/jquery-3.2.1.min.js'/>"/></script>
+  <script src="<c:url value='/resources/vendors/bootstrap/bootstrap.bundle.min.js'/>"/></script>
+  <script src="<c:url value='/resources/vendors/skrollr.min.js'/>"/></script>
+  <script src="<c:url value='/resources/vendors/owl-carousel/owl.carousel.min.js'/>"/></script>
+  <script src="<c:url value='/resources/vendors/nice-select/jquery.nice-select.min.js'/>"/></script>
+  <script src="<c:url value='/resources/vendors/jquery.ajaxchimp.min.js'/>"/></script>
+  <script src="<c:url value='/resources/vendors/mail-script.js'/>"/></script>
+  <script src="<c:url value='/resources/js/main.js'/>"/></script>
 
   <script scr="<c:url value ='/resources/js/main.js'/>"></script>
 

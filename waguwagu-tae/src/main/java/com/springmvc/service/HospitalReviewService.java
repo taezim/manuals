@@ -10,4 +10,7 @@ public interface HospitalReviewService {
 	void setNewReview(HospitalReview hospitalReview);
 	void setUpdateReview(HospitalReview hospitalReview);
 	void setDeleteReview(String reviewId);
+	List<HospitalReview> readHospitalAllReviewList(String hospitalId);
+	double calculateAvgScore(String hospitalId);
+
 }

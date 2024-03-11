@@ -20,6 +20,8 @@
 	<link rel="stylesheet" href="<c:url value='/resources/vendors/owl-carousel/owl.carousel.min.css' />">
 	<link rel="stylesheet" href="<c:url value='/resources/vendors/nice-select/nice-select.css' />">
 	<link rel="stylesheet" href="<c:url value='/resources/vendors/nouislider/nouislider.min.css' />">
+	<link rel="stylesheet" href="<c:url value='/resources/css/test.css'/>"/>
+	
 	<script src="https://kit.fontawesome.com/c3566586b6.js" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="<c:url value='/resources/css/style.css' />">
 
@@ -84,11 +86,18 @@
 	                <ul class="dropdown-menu">
 	                  <li class="nav-item"><a class="nav-link" href="/waguwagu/team/add">구단등록</a></li>
 	                  <li class="nav-item"><a class="nav-link" href="/waguwagu/team">구단목록</a></li>
-	                  <li class="nav-item"><a class="nav-link" href="/waguwagu/games">경기목록</a></li>
 	                  <li class="nav-item"><a class="nav-link" href="/waguwagu/team/result/ranks">구단랭킹</a></li>
 	                  <li class="nav-item"><a class="nav-link" href="confirmation.html">나의구단</a></li>
 	                </ul>
-								</li>
+	              </li>
+	              <li class="nav-item submenu dropdown">
+	                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+	                  aria-expanded="false">경기</a>
+	                <ul class="dropdown-menu">
+	                  <li class="nav-item"><a class="nav-link" href="/waguwagu/games/add">게임등록</a></li>
+	                  <li class="nav-item"><a class="nav-link" href="/waguwagu/games">경기목록</a></li>
+	                </ul>
+	              </li>
 	              <li class="nav-item submenu dropdown">
 	                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 	                  aria-expanded="false">클래스</a>
@@ -104,16 +113,8 @@
 	                  <li class="nav-item"><a class="nav-link" href="/waguwagu/">경기장목록</a></li>
 	                  <li class="nav-item"><a class="nav-link" href="single-blog.html">경기장예약</a></li>
 	                </ul>
-								</li>
-	              <li class="nav-item submenu dropdown">
-	                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-	                  aria-expanded="false">관광</a>
-	                <ul class="dropdown-menu">
-	                  <li class="nav-item"><a class="nav-link" href="blog.html">맛집</a></li>
-	                  <li class="nav-item"><a class="nav-link" href="single-blog.html">둘러볼곳</a></li>
-	                </ul>
-								</li>
-								<li class="nav-item submenu dropdown">
+				</li>
+				<li class="nav-item submenu dropdown">
 	                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 	                  aria-expanded="false">의료</a>
 	                <ul class="dropdown-menu">
@@ -129,12 +130,14 @@
 	              <li class="nav-item"><button><i class="ti-shopping-cart"></i><span class="nav-shop__circle">3</span></button> </li>
 	              <li class="nav-item"><button><i class="fas fa-user"></i></button></li>
 	            </ul>
-	            <c:if test="${empty sessionScope.memberId }">
+	           <c:if test="${empty sessionScope.memberId }">
 	            	<a href="/waguwagu/member/login">로그인</a>
 	            </c:if>
-	            <c:if test="${not empty sessionScope.memberId }">
-	            	<a href="/waguwagu/member/logout">로그아웃</a>
-	            </c:if>
+	            <c:if test="${not empty sessionScope.memberId}">
+				    <form action="/waguwagu/member/logout" method="post">
+				        <input type="submit" value="로그아웃" style="border: none; background: none;  color:rgb(79, 155, 253)">
+				    </form>
+				</c:if>
 	          </div>
 	        </div>
 	      </nav>
@@ -164,6 +167,25 @@
   <section class="section-margin--small mb-5">
     <div class="container">
       <div class="row">
+      
+			<input class="pixel-radio" type="radio" id="all" name="location" value=" " class="radio_check">
+			<input class="pixel-radio" type="radio" id="seoul" name="location" value="서울" class="radio_check">
+			<input class="pixel-radio" type="radio" id="incheon" name="location" value="인천" class="radio_check">
+			<input class="pixel-radio" type="radio" id="gyeonggi" name="location" value="경기" class="radio_check">
+			<input class="pixel-radio" type="radio" id="gangwon" name="location" value="강원" class="radio_check">
+			<input class="pixel-radio" type="radio" id="gyeongnam" name="location" value="경상남도" class="radio_check">
+			<input class="pixel-radio" type="radio" id="busan" name="location" value="부산" class="radio_check">
+			<input class="pixel-radio" type="radio" id="ulsan" name="location" value="울산" class="radio_check">
+			<input class="pixel-radio" type="radio" id="gyeongbuk" name="location" value="경상북도" class="radio_check">
+			<input class="pixel-radio" type="radio" id="daegu" name="location" value="대구" class="radio_check">
+			<input class="pixel-radio" type="radio" id="junnam" name="location" value="전라남도" class="radio_check">
+			<input class="pixel-radio" type="radio" id="gwangju" name="location" value="광주" class="radio_check">
+			<input class="pixel-radio" type="radio" id="junbuk" name="location" value="전라북도" class="radio_check">
+			<input class="pixel-radio" type="radio" id="daejeon" name="location" value="대전" class="radio_check">
+			<input class="pixel-radio" type="radio" id="chungnam" name="location" value="충청남도" class="radio_check">
+			<input class="pixel-radio" type="radio" id="chungbuk" name="location" value="충청북도" class="radio_check">
+			<input class="pixel-radio" type="radio" id="jeju" name="location" value="제주">
+      
         <div class="col-xl-3 col-lg-4 col-md-5">
 	          <div class="sidebar-categories">
 	            <div class="head">지역</div>
@@ -257,10 +279,26 @@
     </div>
   </section>
 	<!-- ================ category section end ================= -->		  
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
-	<!-- ================ top product area start ================= -->	
-	
-	<!-- ================ top product area end ================= -->		
+<script>
+    $(document).ready(function() {
+        // 라디오 버튼 클릭 이벤트 처리
+        $('input[name="location"]').on('change', function() {
+            // 선택된 라디오 버튼의 값 (서울, 인천, ...) 가져오기
+            var selectedLocation = $('input[name="location"]:checked').val();
+
+            // URL 동적으로 변경
+            var newUrl = '/waguwagu/team/location?location=' + encodeURIComponent(selectedLocation);
+            window.location.href = newUrl;
+
+            // URL 확인
+            console.log(newUrl);
+            // 또는 alert로 확인
+          
+        });
+    });
+</script>
 
   
   <script href="<c:url value ='/resources/js/jquery-3.3.1.min.js'/>"></script>

@@ -18,8 +18,8 @@ public class LessonReview implements Serializable{
 	private String date;
 	private String content;
 	private int score;
-	private String fileName;
-	private MultipartFile reviewImage;
+	private String name;
+	private String title;
 	
 	public LessonReview() {
 		super();
@@ -66,20 +66,22 @@ public class LessonReview implements Serializable{
 		this.score = score;
 	}
 
-	public String getFileName() {
-		return fileName;
+	
+
+	public String getName() {
+		return name;
 	}
 
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public MultipartFile getReviewImage() {
-		return reviewImage;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setReviewImage(MultipartFile reviewImage) {
-		this.reviewImage = reviewImage;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public String getUserId() {

@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -43,21 +44,32 @@ public class HospitalController {
 	}
 	
 	@GetMapping("/hospital")
-	public String requestHospitalById(@RequestParam("id") String hospitalId, Model model) {
+	public String requestHospitalById(@RequestParam("id") String hospitalId, Model model,HttpSession session) {
 		Hospital hospitalById = hospitalService.readHospitalById(hospitalId);
 		model.addAttribute("hospital", hospitalById);
 		
+		// 세션에서 memberId 가져오기
+	    String memberId = (String) session.getAttribute("memberId");
+	    System.out.println("memberId=" + memberId);
+
+	    // 기존에 사용되던 Member 객체를 사용하지 않음
+
+	    model.addAttribute("id", memberId);
+ 	    
+		
+	    
 		return "/Hospital/hospital";
+		
 	}
 	
 	
 	//Create
-	@GetMapping("/add")
+	@GetMapping("/a")
 	public String requestAddHospitalForm(@ModelAttribute("addHospital")Hospital hospital) {
 		return "/Hospital/hadd";  //병원등록페이지.jsp
 	}
 	
-	@PostMapping("/add")
+	@PostMapping("/a")
 	public String submitAddNewHospital(@ModelAttribute("addHospital")Hospital hospital, HttpServletRequest request) {
 		
 		MultipartFile img = hospital.getHospitalImage();

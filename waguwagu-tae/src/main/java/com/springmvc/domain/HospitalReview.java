@@ -17,10 +17,32 @@ public class HospitalReview implements Serializable{
 	private int reviewRating;  //리뷰점수
 	private String fileName;  //파일이름
 	private MultipartFile reviewImage;  //이미지
+	private String name;
+	private String title;
 	
 	public HospitalReview() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+
+	public String getName() {
+		return name;
+	}
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+	public String getTitle() {
+		return title;
+	}
+
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 

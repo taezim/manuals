@@ -55,7 +55,8 @@ public class TeamWinningRepositoryImpl implements TeamWinningRepository{
 	        return resultList.get(0); // 일단은 첫 번째 결과를 반환하도록 함
 	    } else {
 	        // teamId에 해당하는 결과가 없는 경우
-	        throw new IllegalArgumentException("일치하는 결과가 없습니다.");
+	    	return null;  //해당 값없어도 예외 던지지않고 페이지 그대로 출력함
+	        //throw new IllegalArgumentException("일치하는 결과가 없습니다.");
 	    }
 		
 	}
