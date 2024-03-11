@@ -15,5 +15,6 @@ public interface TeamRepository {
 	void setUpdateTeam(Team team);
 	void setDeleteTeam(String teamId);
 	List<Team> findByLocation(String location);
-
+	void joinTeam(String userId, String teamId);
+	boolean isMember(String userId, String teamId);
 }

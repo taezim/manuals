@@ -106,5 +106,21 @@ public class TeamRepositoryImpl implements TeamRepository{
 	}
 
 
+	@Override
+	public void joinTeam(String userId, String teamId) {
+		String SQL = "INSERT INTO teammember (userid, t_id, joindate) VALUES (?, ?, CURRENT_TIMESTAMP)";
+        template.update(SQL, userId, teamId);
+		
+	}
+
+
+	@Override
+	public boolean isMember(String userId, String teamId) {
+		String SQL = "SELECT COUNT(*) FROM teammember WHERE userid = ? AND t_id = ?";
+        int count = template.queryForObject(SQL, Integer.class, userId, teamId);
+        return count > 0;
+	}
+
+
 
 }

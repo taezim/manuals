@@ -82,14 +82,18 @@
     .text-md-right{}
 
   </style>
+
 <script type="text/javascript">
-    function checkAndNavigate(event, hasMatches) {
-        if (!hasMatches) {
-            event.preventDefault(); // 이벤트 기본 동작 막기 (페이지 이동 방지)
-            alert("매칭 전입니다!");
-        }
-    }
+	function checkAndNavigate(event, matches) {
+	    if (!matches || matches.length === 0) {
+	        event.preventDefault(); // 이벤트 기본 동작 막기 (페이지 이동 방지)
+	        alert("매칭 전입니다!");
+	    }
+	    // 매칭 정보가 있으면 페이지로 이동
+	    // 여기에 필요한 다른 로직 추가 가능
+	}
 </script>
+
 </head>
 <body>
 	<header class="header_area">
@@ -286,13 +290,12 @@
 			                                </div>
 			                            </div>
 			                        </div>
-			                        <div class="text-md-right">
-			                        	<a href="<c:url value='/games/game?id=${game.gameId}'/>" onclick="checkAndNavigate(event, ${not empty game.matches})" class="btn btn-sm btn-primary">상세보기</a>
-										
+			                       <div class="text-md-right">
+			                        	<a href="<c:url value='/games/game?id=${game.gameId}'/>" onclick="checkAndNavigate(event, ${not empty game.matches})" class="btn btn-sm btn-primary">상세보기</a>										
 	      								<a href="<c:url value='/match/add?id=${game.gameId}'/>" onclick="checkAndNavigateMatch(event, '${game.gameId}', ${game.matches})" class="btn btn-sm btn-primary">매칭</a>
 										<a href="<c:url value='/match/add?id=${game.gameId}'/>" onclick="checkAndNavigateMatch(event, '${game.gameId}', ${game.matches})" class="btn btn-sm btn-primary">매칭2</a>
 	      								<a href="<c:url value='/match/delete?id=${game.gameId}'/>" class="btn btn-sm btn-primary" onclick="return deleteConfirm('${game.gameId}')">매칭취소 &raquo;</a>			                        
-			                        </div>
+			                        </div>  
 			                    </li>
 			                </ul>
 			            </div>

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -58,7 +59,8 @@ public class TeamController {
 	} 
 	
 	@GetMapping("/team")
-	public String requestTemaById(@RequestParam("id") String teamId, Model model) {
+	public String requestTemaById(@RequestParam("id") String teamId,HttpSession session, Model model) {
+		
 		Team teamById = teamService.readTeamById(teamId);
 		model.addAttribute("tb",teamById);
 	    String recentMatchesResult = teamWinningService.getRecentMatchesResult(teamId);
@@ -68,6 +70,10 @@ public class TeamController {
 	    double winningRate = teamWinningService.calculateWinningRate(teamId);
 	    int totalGames = teamWinningService.totalGames(teamId);
 	   
+	    String memberId = (String) session.getAttribute("memberId");
+	    
+	    model.addAttribute("memberId",memberId);
+	    
 	    // Add these attributes to the model
 	    model.addAttribute("recentMatchesResult", recentMatchesResult);
 	    model.addAttribute("totalWins", totalWins);
@@ -75,6 +81,8 @@ public class TeamController {
 	    model.addAttribute("totalLosses", totalLosses);
 	    model.addAttribute("winningRate", winningRate);
 	    model.addAttribute("totalGames",totalGames);
+	    model.addAttribute("teamId",teamId);
+	    
 	    
 	    
 		return "/Team/team";
@@ -184,6 +192,20 @@ public class TeamController {
 		teamService.setDeleteTeam(teamId);
 		return "redirect:/team";
 	}
+	
+	@GetMapping("/join")
+	public String joinTeamForm(@RequestParam("userId")String userId, @RequestParam("id") String teamId) {
+		teamService.joinTeam(userId, teamId);
+        return "/team/team?id=" + teamId;
+	}
+	
+	@PostMapping("/join")
+	@ResponseBody
+    public boolean joinTeam(@RequestParam("userId") String userId, @RequestParam("teamId") String teamId) {
+        
+		boolean res = teamService.joinTeam(userId, teamId);
+        return res; // 가입 후 해당 팀 페이지로 리다이렉트
+    }
 }
 
 

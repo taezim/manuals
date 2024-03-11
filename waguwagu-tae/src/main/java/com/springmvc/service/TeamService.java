@@ -18,5 +18,5 @@ public interface TeamService {
 	void setDeleteTeam(String teamId);
 
 	List<Team> findByLocation(String location);
-
+	boolean joinTeam(String userId, String teamId);
 }

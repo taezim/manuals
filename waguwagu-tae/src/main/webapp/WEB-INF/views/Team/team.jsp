@@ -245,11 +245,11 @@
 		<div class="container">
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
 				<li class="nav-item">
-					<a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">병원정보</a>
+					<a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">팀 소개</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link active" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review"
-					 aria-selected="false">리뷰</a>
+					 aria-selected="false">가입신청</a>
 				</li>
 			</ul>
 			<div class="tab-content" id="myTabContent">
@@ -417,21 +417,18 @@
 						<div class="col-lg-6">
 							<div class="review_box">
 								<h4>가입신청</h4>
-				                <form action="#/" class="form-contact form-review mt-3">
+				                <form action="/waguwagu/team/join" class="form-contact form-review mt-3" id="joinForm" method="post">
 				                  <div class="form-group">
-				                    <input class="form-control" name="name" type="text" placeholder="이름을 입력하세요." required>
+				                    <input class="form-control" name="userId" type="text" value="${memberId}" placeholder="아이디를 입력하세요." required>
 				                  </div>
 				                  <div class="form-group">
-				                    <input class="form-control" name="email" type="email" placeholder="이메일을 입력하세요." required>
-				                  </div>
-				                  <div class="form-group">
-				                    <input class="form-control" name="subject" type="text" placeholder="제목을 입력하세요.">
+				                    <input class="form-control" name="teamId" type="teamId" value="${teamId}" placeholder="팀아이디를 입력하세요." required>
 				                  </div>
 				                  <div class="form-group">
 				                    <textarea class="form-control different-control w-100" name="textarea" id="textarea" cols="30" rows="5" placeholder="글을 작성하세요."></textarea>
 				                  </div>
 				                  <div class="form-group text-center text-md-right mt-3">
-				                    <button type="submit" class="button button--active button-review">등록</button>
+				                    <button type="submit" class="button button--active button-review">가입신청</button>
 				                  </div>
 				                </form>
 							</div>
@@ -442,7 +439,30 @@
 		</div>
 	</section>
 	<!--================End Product Description Area =================-->
-  
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<script>
+	    $(document).ready(function() {
+	        $("#joinForm").submit(function(e) {
+	            e.preventDefault(); // 폼 제출 방지
+	
+	            // 폼 데이터를 직렬화하여 서버로 전송
+	            $.ajax({
+	                type: "POST",
+	                url: "/waguwagu/team/join",
+	                data: $(this).serialize(),
+	                success: function(response) {
+	                    if (response) {
+	                        alert("가입 신청이 성공적으로 제출되었습니다!");
+	                        window.location.href = '/team/team?id=' + teamId;
+	                    } else {
+	                        alert("이미 가입되었습니다!");
+	                    }
+	                }
+	                
+	            });
+	        });
+	    });
+	</script>
   <script src="<c:url value='/resources/vendors/jquery/jquery-3.2.1.min.js'/>"/></script>
   <script src="<c:url value='/resources/vendors/bootstrap/bootstrap.bundle.min.js'/>"/></script>
   <script src="<c:url value='/resources/vendors/skrollr.min.js'/>"/></script>

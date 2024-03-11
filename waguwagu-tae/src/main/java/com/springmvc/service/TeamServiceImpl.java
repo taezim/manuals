@@ -59,5 +59,19 @@ public class TeamServiceImpl implements TeamService{
 		// TODO Auto-generated method stub
 		return teamRepository.findByLocation(location);
 	}
+
+	@Override
+	public boolean joinTeam(String userId, String teamId) {
+		// 이미 팀에 속한 멤버인지 확인
+        boolean isMember = teamRepository.isMember(userId, teamId);
+
+        // 팀에 속하지 않은 경우에만 가입 처리
+        if (!isMember) {
+            teamRepository.joinTeam(userId, teamId);
+            return true;
+        }
+        return false;
+		
+	}
 	
 }
